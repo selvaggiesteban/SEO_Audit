@@ -1,0 +1,171 @@
+/* ============================================================
+   SEO AUDIT TOOL - Table Component
+   ============================================================
+   Tabla de datos con badges de posición, barras CTR y tags
+   de relevancia.
+   ============================================================ */
+
+/* ==========================================================
+   TABLE CONTAINER
+   ========================================================== */
+.table-container {
+  padding: var(--space-8) var(--space-10);
+  overflow-x: auto;
+}
+
+/* ==========================================================
+   DATA TABLE
+   ========================================================== */
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--font-size-base);
+}
+
+.data-table thead th {
+  background: var(--gray-900);
+  color: white;
+  padding: var(--space-4) var(--space-5);
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wider);
+  white-space: nowrap;
+}
+
+.data-table thead th:first-child {
+  border-radius: 8px 0 0 0;
+}
+
+.data-table thead th:last-child {
+  border-radius: 0 8px 0 0;
+}
+
+.data-table tbody tr {
+  transition: all var(--transition-fast);
+}
+
+.data-table tbody tr:hover {
+  background: var(--gray-50);
+}
+
+.data-table tbody td {
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--gray-200);
+  vertical-align: middle;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==========================================================
+   QUERY TEXT
+   ========================================================== */
+.query-text {
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-900);
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+/* ==========================================================
+   IMPRESSIONS
+   ========================================================== */
+.impressions {
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-700);
+}
+
+/* ==========================================================
+   CTR BAR
+   ========================================================== */
+.ctr-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.ctr-bar span {
+  min-width: 50px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-700);
+}
+
+.ctr-bar-fill {
+  height: 6px;
+  background: var(--gray-200);
+  border-radius: 3px;
+  flex: 1;
+  max-width: 80px;
+  overflow: hidden;
+}
+
+.ctr-bar-fill span {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+  border-radius: 3px;
+  min-width: 0;
+}
+
+/* ==========================================================
+   FINDINGS TABLE
+   ========================================================== */
+.findings-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.findings-table thead th {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.findings-table tbody td {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--gray-200);
+  vertical-align: top;
+}
+
+.findings-table tbody tr:hover {
+  background: var(--gray-50);
+}
+
+.findings-table .finding-title {
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-900);
+  margin-bottom: var(--space-1);
+}
+
+.findings-table .finding-description {
+  font-size: var(--font-size-sm);
+  color: var(--gray-600);
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .table-container {
+    padding: var(--space-5);
+  }
+
+  .data-table {
+    font-size: var(--font-size-sm);
+  }
+
+  .data-table thead th,
+  .data-table tbody td {
+    padding: var(--space-3) var(--space-3);
+  }
+}

@@ -1,0 +1,134 @@
+/* ============================================================
+   SEO AUDIT TOOL - Card Component
+   ============================================================
+   Tarjeta elevada con header gradiente, secciones y footer.
+   ============================================================ */
+
+/* ==========================================================
+   CONTAINER
+   ========================================================== */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+/* ==========================================================
+   CARD
+   ========================================================== */
+.card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* ==========================================================
+   CARD HEADER
+   ========================================================== */
+.card-header {
+  background: var(--gradient-header);
+  color: white;
+  padding: var(--space-8) var(--space-10);
+}
+
+.card-header h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-2);
+  color: white;
+}
+
+.card-header .subtitle {
+  font-size: var(--font-size-lg);
+  opacity: 0.9;
+}
+
+.card-header p {
+  color: white;
+  opacity: 0.9;
+}
+
+/* ==========================================================
+   CARD BODY
+   ========================================================== */
+.card-body {
+  padding: var(--space-8) var(--space-10);
+}
+
+/* ==========================================================
+   CARD SECTION
+   ========================================================== */
+.card-section {
+  padding: var(--space-8) var(--space-10);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.card-section:last-child {
+  border-bottom: none;
+}
+
+.card-section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.card-section-header h2 {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  color: var(--gray-900);
+}
+
+.card-section-header .icon {
+  font-size: var(--font-size-2xl);
+}
+
+/* ==========================================================
+   CARD FOOTER
+   ========================================================== */
+.card-footer {
+  padding: var(--space-8) var(--space-10);
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-200);
+}
+
+.card-footer h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-4);
+  color: var(--gray-900);
+}
+
+/* ==========================================================
+   CARD VARIANTS
+   ========================================================== */
+.card-bordered {
+  border: 1px solid var(--gray-200);
+}
+
+.card-flush {
+  border-radius: 0;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .card-header {
+    padding: var(--space-5);
+  }
+
+  .card-header h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .card-body,
+  .card-section,
+  .card-footer {
+    padding: var(--space-5);
+  }
+
+  .card-section-header h2 {
+    font-size: var(--font-size-xl);
+  }
+}

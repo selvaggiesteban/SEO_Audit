@@ -1,0 +1,54 @@
+<!-- SECTION 05: Technical SEO - SEO Técnico -->
+<div class="card-section">
+    <div class="card-section-header">
+        <span class="icon">⚙️</span>
+        <h2>SEO Técnico</h2>
+    </div>
+
+    <div class="stats mb-6">
+        {% for stat in technical_stats %}
+        <div class="stat-box {{ stat.class }}">
+            <div class="stat-box-icon">{{ stat.icon }}</div>
+            <div class="number">{{ stat.value }}</div>
+            <div class="label">{{ stat.label }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h4>PageSpeed Insights</h4>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-5); margin-bottom: var(--space-6);">
+        {% for device in pagespeed_devices %}
+        <div style="background: white; border-radius: 12px; padding: var(--space-5); box-shadow: var(--shadow-sm); border: 1px solid var(--gray-200);">
+            <h4 style="margin-bottom: var(--space-4);">{{ device.icon }} {{ device.label }}</h4>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4);">
+                {% for metric in device.metrics %}
+                <div class="text-center">
+                    <div class="score-badge {{ metric.score_class }}">{{ metric.score }}</div>
+                    <div class="text-sm text-muted mt-2">{{ metric.name }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h4>Problemas Técnicos Detectados</h4>
+    <div class="findings-grid">
+        {% for issue in technical_issues %}
+        <div class="finding-card {{ issue.severity }}">
+            <span class="severity-badge {{ issue.severity }}">{{ issue.severity_label }}</span>
+            <h4>{{ issue.title }}</h4>
+            <p>{{ issue.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="mt-6" style="background: var(--warning-50); border-radius: 12px; padding: var(--space-5);">
+        <h4 style="margin-bottom: var(--space-3); color: var(--warning-800);">🔧 Acciones Técnicas Prioritarias</h4>
+        <ul style="padding-left: var(--space-6); margin: 0;">
+            {% for action in technical_actions %}
+            <li style="margin-bottom: var(--space-2); color: var(--gray-700);">{{ action }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<!-- SECTION 09: Opportunities - Oportunidades Identificadas -->
+<div class="card-section">
+    <div class="card-section-header">
+        <span class="icon">🎯</span>
+        <h2>Oportunidades Identificadas</h2>
+    </div>
+
+    <p class="text-muted mb-6">{{ opportunities_intro }}</p>
+
+    <div class="findings-summary mb-6">
+        <div class="findings-summary-item">
+            <span class="status-dot red"></span>
+            <span class="count">{{ critical_count }}</span>
+            <span class="label">Críticas</span>
+        </div>
+        <div class="findings-summary-item">
+            <span class="status-dot yellow"></span>
+            <span class="count">{{ high_count }}</span>
+            <span class="label">Altas</span>
+        </div>
+        <div class="findings-summary-item">
+            <span class="status-dot blue"></span>
+            <span class="count">{{ medium_count }}</span>
+            <span class="label">Medianas</span>
+        </div>
+        <div class="findings-summary-item">
+            <span class="status-dot gray"></span>
+            <span class="count">{{ low_count }}</span>
+            <span class="label">Bajas</span>
+        </div>
+    </div>
+
+    <h4>Oportunidades de Alto Impacto</h4>
+    <div class="findings-grid mb-6">
+        {% for opportunity in high_impact %}
+        <div class="finding-card {{ opportunity.severity }}">
+            <span class="severity-badge {{ opportunity.severity }}">{{ opportunity.severity_label }}</span>
+            <h4>{{ opportunity.title }}</h4>
+            <p>{{ opportunity.description }}</p>
+            <div class="flex items-center gap-3 mt-3">
+                <span class="effort-badge {{ opportunity.effort_class }}">{{ opportunity.effort_label }}</span>
+                <span class="text-sm text-muted">Impacto: {{ opportunity.impact }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h4>Oportunidades Rápidas (Quick Wins)</h4>
+    <div class="findings-grid mb-6">
+        {% for quickwin in quick_wins %}
+        <div class="finding-card pass">
+            <span class="severity-badge pass">Quick Win</span>
+            <h4>{{ quickwin.title }}</h4>
+            <p>{{ quickwin.description }}</p>
+            <div class="flex items-center gap-3 mt-3">
+                <span class="effort-badge low">Bajo Esfuerzo</span>
+                <span class="text-sm text-muted">{{ quickwin.estimated_impact }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h4>Oportunidades de Contenido</h4>
+    <div class="findings-grid">
+        {% for content_opp in content_opportunities %}
+        <div class="finding-card medium">
+            <span class="severity-badge medium">Contenido</span>
+            <h4>{{ content_opp.title }}</h4>
+            <p>{{ content_opp.description }}</p>
+            <div class="flex items-center gap-3 mt-3">
+                <span class="relevance-tag high">{{ content_opp.relevance_label }}</span>
+                <span class="text-sm text-muted">Volumen: {{ content_opp.search_volume }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

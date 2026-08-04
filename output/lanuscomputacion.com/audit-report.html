@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoría SEO - Lanús Computación - SEO Audit Report</title>
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components/card.css">
+    <link rel="stylesheet" href="../css/components/stat-box.css">
+    <link rel="stylesheet" href="../css/components/badges.css">
+    <link rel="stylesheet" href="../css/components/table.css">
+    <link rel="stylesheet" href="../css/components/cta.css">
+    <link rel="stylesheet" href="../css/components/findings.css">
+    <link rel="stylesheet" href="../css/components/score-gauge.css">
+    <link rel="stylesheet" href="../css/components/plan-timeline.css">
+    <style>
+        .audit-meta {
+            display: flex;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-4);
+        }
+        .audit-meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--font-size-sm);
+            color: var(--gray-600);
+        }
+        .audit-meta-item strong {
+            color: var(--gray-900);
+        }
+        .section-divider {
+            height: 4px;
+            background: var(--gradient-header);
+            margin: 0;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <!-- HEADER -->
+            <div class="card-header">
+                <h1>Auditoría SEO - Lanús Computación</h1>
+                <p class="subtitle">Análisis completo de posicionamiento web</p>
+                <div class="audit-meta">
+                    <div class="audit-meta-item">
+                        <span>🌐</span>
+                        <span><strong>Sitio:</strong> sc-domain:lanuscomputacion.com</span>
+                    </div>
+                    <div class="audit-meta-item">
+                        <span>📅</span>
+                        <span><strong>Fecha:</strong> 04/08/2026</span>
+                    </div>
+                    <div class="audit-meta-item">
+                        <span>📊</span>
+                        <span><strong>Período:</strong> 07/07/2026 - 04/08/2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCORE GAUGE -->
+            <div class="score-gauge-container">
+                <div class="score-gauge">
+                    <svg viewBox="0 0 100 60">
+                        <path class="score-gauge-bg" d="M10,50 A40,40 0 0,1 90,50" />
+                        <path class="score-gauge-fill needs-work" 
+                              d="M10,50 A40,40 0 0,1 90,50"
+                              style="stroke-dashoffset: 116.03" />
+                    </svg>
+                    <div class="score-value needs-work">59</div>
+                </div>
+                <div class="score-label">Necesita Mejoras</div>
+                <div class="score-description">Puntuación basada en 7 dimensiones de análisis</div>
+                
+                <!-- Score Breakdown -->
+                <div class="score-breakdown">
+                    {% for dimension in dimensions %}
+                    <div class="score-breakdown-item">
+                        <div class="weight">{{ dimension.weight }}%</div>
+                        <div class="dimension">{{ dimension.name }}</div>
+                        <div class="dimension-score {{ dimension.score_class }}">{{ dimension.score }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- STATS -->
+            <div class="stats">
+                {% for stat in stats %}
+                <div class="stat-box {{ stat.class }}">
+                    <div class="number">{{ stat.value }}</div>
+                    <div class="label">{{ stat.label }}</div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- SECTIONS -->
+            {% for section in sections %}
+            <div class="card-section">
+                <div class="card-section-header">
+                    <span class="icon">{{ section.icon }}</span>
+                    <h2>{{ section.title }}</h2>
+                </div>
+                {{ section.content }}
+            </div>
+            {% endfor %}
+
+            <!-- ACTION PLAN -->
+            <div class="card-section">
+                <div class="card-section-header">
+                    <span class="icon">🎯</span>
+                    <h2>Plan de Acción 30/60/90</h2>
+                </div>
+                <div class="plan-timeline">
+                    {% for phase in action_plan %}
+                    <div class="timeline-phase {{ phase.class }}">
+                        <div class="phase-header">
+                            <span class="phase-badge">{{ phase.badge }}</span>
+                            <div>
+                                <h3 class="phase-title">{{ phase.title }}</h3>
+                                <p class="phase-subtitle">{{ phase.subtitle }}</p>
+                            </div>
+                        </div>
+                        <div class="tasks-list">
+                            {% for task in phase.tasks %}
+                            <div class="task-card {{ task.priority }}">
+                                <div class="task-content">
+                                    <h4>{{ task.title }}</h4>
+                                    <p>{{ task.description }}</p>
+                                </div>
+                                <div class="task-meta">
+                                    <span class="priority-badge {{ task.priority }}">{{ task.priority_label }}</span>
+                                    <span class="effort-badge {{ task.effort }}">{{ task.effort_label }}</span>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="card-section">
+                <div class="cta-box">
+                    <div class="icon">🚀</div>
+                    <h3>¿Listo para mejorar tu SEO?</h3>
+                    <p>Implementa este plan de acción y observes mejoras en tu posicionamiento en los próximos 90 días.</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="cta-button cta-button-primary">📄 Descargar PDF</a>
+                        <a href="#" class="cta-button cta-button-secondary">📧 Enviar por Email</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="card-footer">
+                <p style="text-align: center; color: var(--gray-500); font-size: var(--font-size-sm);">
+                    Generado por SEO Audit Tool • Powered by Google Search Console & PageSpeed Insights API
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animate score gauge on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const gaugeFill = document.querySelector('.score-gauge-fill');
+            if (gaugeFill) {
+                setTimeout(() => {
+                    gaugeFill.style.strokeDashoffset = '116.03';
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>

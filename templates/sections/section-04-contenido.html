@@ -1,0 +1,68 @@
+<!-- SECTION 04: Content Analysis - Análisis de Contenido -->
+<div class="card-section">
+    <div class="card-section-header">
+        <span class="icon">📝</span>
+        <h2>Análisis de Contenido</h2>
+    </div>
+
+    <div class="stats mb-6">
+        {% for stat in content_stats %}
+        <div class="stat-box {{ stat.class }}">
+            <div class="stat-box-icon">{{ stat.icon }}</div>
+            <div class="number">{{ stat.value }}</div>
+            <div class="label">{{ stat.label }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h4>Rendimiento de Páginas Principales</h4>
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Página</th>
+                    <th>Vistas</th>
+                    <th>Sesiones</th>
+                    <th>Tasa de Rebote</th>
+                    <th>Duración Prom.</th>
+                    <th>Engagement</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for page in top_pages %}
+                <tr>
+                    <td class="query-text" style="max-width: 250px;">{{ page.path }}</td>
+                    <td>{{ page.views }}</td>
+                    <td>{{ page.sessions }}</td>
+                    <td>
+                        <span class="severity-badge {{ page.bounce_class }}">{{ page.bounce_rate }}</span>
+                    </td>
+                    <td>{{ page.avg_duration }}</td>
+                    <td>
+                        <span class="relevance-tag {{ page.engagement_class }}">{{ page.engagement_label }}</span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="findings-grid mt-6">
+        {% for finding in content_findings %}
+        <div class="finding-card {{ finding.severity }}">
+            <span class="severity-badge {{ finding.severity }}">{{ finding.severity_label }}</span>
+            <h4>{{ finding.title }}</h4>
+            <p>{{ finding.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="mt-6" style="background: var(--success-50); border-radius: 12px; padding: var(--space-5);">
+        <h4 style="margin-bottom: var(--space-3); color: var(--success-800);">✅ Recomendaciones de Contenido</h4>
+        <ul style="padding-left: var(--space-6); margin: 0;">
+            {% for rec in content_recommendations %}
+            <li style="margin-bottom: var(--space-2); color: var(--gray-700);">{{ rec }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

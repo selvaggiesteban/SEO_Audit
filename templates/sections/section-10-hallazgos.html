@@ -1,0 +1,128 @@
+<!-- SECTION 10: Findings Summary - Resumen de Hallazgos -->
+<div class="card-section">
+    <div class="card-section-header">
+        <span class="icon">📋</span>
+        <h2>Resumen de Hallazgos</h2>
+    </div>
+
+    <div class="findings-summary mb-6">
+        <div class="findings-summary-item">
+            <span class="status-dot red"></span>
+            <span class="count">{{ critical_total }}</span>
+            <span class="label">Críticos</span>
+        </div>
+        <div class="findings-summary-item">
+            <span class="status-dot yellow"></span>
+            <span class="count">{{ high_total }}</span>
+            <span class="label">Altos</span>
+        </div>
+        <div class="findings-summary-item">
+            <span class="status-dot blue"></span>
+            <span class="count">{{ medium_total }}</span>
+            <span class="label">Medios</span>
+        </div>
+        <div class="findings-summary-item">
+            <span class="status-dot gray"></span>
+            <span class="count">{{ low_total }}</span>
+            <span class="label">Bajos</span>
+        </div>
+    </div>
+
+    <h4>🔴 Hallazgos Críticos</h4>
+    <div class="findings-grid mb-6">
+        {% for finding in critical_findings %}
+        <div class="finding-card critical">
+            <span class="severity-badge critical">Crítico</span>
+            <h4>{{ finding.title }}</h4>
+            <p>{{ finding.description }}</p>
+            <div class="flex items-center gap-3 mt-3">
+                <span class="effort-badge {{ finding.effort_class }}">{{ finding.effort_label }}</span>
+                <span class="text-sm text-muted">{{ finding.category }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h4>🟡 Hallazgos de Alta Prioridad</h4>
+    <div class="findings-grid mb-6">
+        {% for finding in high_findings %}
+        <div class="finding-card high">
+            <span class="severity-badge high">Alta</span>
+            <h4>{{ finding.title }}</h4>
+            <p>{{ finding.description }}</p>
+            <div class="flex items-center gap-3 mt-3">
+                <span class="effort-badge {{ finding.effort_class }}">{{ finding.effort_label }}</span>
+                <span class="text-sm text-muted">{{ finding.category }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h4>🔵 Hallazgos de Media Prioridad</h4>
+    <div class="findings-grid mb-6">
+        {% for finding in medium_findings %}
+        <div class="finding-card medium">
+            <span class="severity-badge medium">Media</span>
+            <h4>{{ finding.title }}</h4>
+            <p>{{ finding.description }}</p>
+            <div class="flex items-center gap-3 mt-3">
+                <span class="effort-badge {{ finding.effort_class }}">{{ finding.effort_label }}</span>
+                <span class="text-sm text-muted">{{ finding.category }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h4>⚫ Hallazgos de Baja Prioridad</h4>
+    <div class="findings-grid mb-6">
+        {% for finding in low_findings %}
+        <div class="finding-card low">
+            <span class="severity-badge low">Baja</span>
+            <h4>{{ finding.title }}</h4>
+            <p>{{ finding.description }}</p>
+            <div class="flex items-center gap-3 mt-3">
+                <span class="effort-badge {{ finding.effort_class }}">{{ finding.effort_label }}</span>
+                <span class="text-sm text-muted">{{ finding.category }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div style="background: var(--gray-50); border-radius: 12px; padding: var(--space-6);">
+        <h4 style="margin-bottom: var(--space-4);">📊 Distribución por Categoría</h4>
+        <div class="table-container" style="padding: 0;">
+            <table class="findings-table">
+                <thead>
+                    <tr>
+                        <th>Categoría</th>
+                        <th>Críticos</th>
+                        <th>Altos</th>
+                        <th>Medios</th>
+                        <th>Bajos</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in findings_by_category %}
+                    <tr>
+                        <td class="font-semibold">{{ category.name }}</td>
+                        <td>
+                            <span class="severity-badge critical" style="font-size: 0.65rem;">{{ category.critical }}</span>
+                        </td>
+                        <td>
+                            <span class="severity-badge high" style="font-size: 0.65rem;">{{ category.high }}</span>
+                        </td>
+                        <td>
+                            <span class="severity-badge medium" style="font-size: 0.65rem;">{{ category.medium }}</span>
+                        </td>
+                        <td>
+                            <span class="severity-badge low" style="font-size: 0.65rem;">{{ category.low }}</span>
+                        </td>
+                        <td class="font-bold">{{ category.total }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,219 @@
+/* ============================================================
+   SEO AUDIT TOOL - Plan Timeline Component
+   ============================================================
+   Timeline para el plan de acción 30/60/90 días con cards
+   de prioridad P0-P3.
+   ============================================================ */
+
+/* ==========================================================
+   PLAN TIMELINE
+   ========================================================== */
+.plan-timeline {
+  position: relative;
+  padding: var(--space-8) var(--space-10);
+}
+
+/* ==========================================================
+   TIMELINE PHASE
+   ========================================================== */
+.timeline-phase {
+  position: relative;
+  margin-bottom: var(--space-8);
+  padding-left: var(--space-8);
+}
+
+.timeline-phase::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gray-200);
+}
+
+.timeline-phase:last-child::before {
+  bottom: auto;
+  height: 24px;
+}
+
+/* ==========================================================
+   PHASE HEADER
+   ========================================================== */
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  position: relative;
+}
+
+.phase-header::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-8) - 6px);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+  background: white;
+  z-index: 1;
+}
+
+.timeline-phase.active .phase-header::before {
+  background: var(--primary);
+}
+
+.phase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--primary);
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.phase-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--gray-900);
+  margin: 0;
+}
+
+.phase-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--gray-500);
+  margin: 0;
+}
+
+/* ==========================================================
+   TASKS LIST
+   ========================================================== */
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ==========================================================
+   TASK CARD
+   ========================================================== */
+.task-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-4) var(--space-5);
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--gray-300);
+  transition: all var(--transition-fast);
+}
+
+.task-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
+
+.task-card .task-content h4 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-900);
+  margin: 0 0 var(--space-1) 0;
+}
+
+.task-card .task-content p {
+  font-size: var(--font-size-sm);
+  color: var(--gray-600);
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+/* ==========================================================
+   PRIORITY COLORS
+   ========================================================== */
+.task-card.p0 {
+  border-left-color: var(--danger);
+}
+
+.task-card.p1 {
+  border-left-color: var(--warning);
+}
+
+.task-card.p2 {
+  border-left-color: var(--info);
+}
+
+.task-card.p3 {
+  border-left-color: var(--gray-400);
+}
+
+/* ==========================================================
+   EFFORT BADGE
+   ========================================================== */
+.effort-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  background: var(--gray-100);
+  color: var(--gray-600);
+  white-space: nowrap;
+}
+
+.effort-badge.low {
+  background: var(--success-50);
+  color: var(--success-700);
+}
+
+.effort-badge.medium {
+  background: var(--warning-50);
+  color: var(--warning-700);
+}
+
+.effort-badge.high {
+  background: var(--danger-50);
+  color: var(--danger-700);
+}
+
+/* ==========================================================
+   TASK META
+   ========================================================== */
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .plan-timeline {
+    padding: var(--space-5);
+  }
+
+  .timeline-phase {
+    padding-left: var(--space-6);
+  }
+
+  .phase-header::before {
+    left: calc(-1 * var(--space-6) - 6px);
+  }
+
+  .task-card {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .task-meta {
+    justify-content: flex-start;
+  }
+}

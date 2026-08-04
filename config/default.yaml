@@ -1,0 +1,81 @@
+# SEO Audit Tool - Default Configuration
+# =======================================
+
+# Site Configuration
+site_url: "https://example.com"
+site_name: "Example Site"
+period_days: 28
+output_dir: "./output"
+
+# External Services
+ga4_property_id: null
+bing_site_url: null
+pagespeed_api_key: null
+
+# Keyword Filters
+keyword_filters:
+  min_impressions: 10
+  max_position: 30
+  position_ranges:
+    excellent:
+      min: 11
+      max: 15
+    good:
+      min: 16
+      max: 20
+    needs_work:
+      min: 21
+      max: 30
+
+# Scoring Weights (must sum to 100)
+weights:
+  posicionamiento: 25
+  palabras_clave: 20
+  contenido: 15
+  seo_tecnico: 15
+  experiencia_usuario: 10
+  enlaces: 10
+  competencia: 5
+
+# Report Settings
+report:
+  title_prefix: "Auditoría SEO"
+  subtitle: "Análisis completo de posicionamiento web"
+  include_raw_data: true
+  include_scoring: true
+  generate_pdf: false
+
+# Action Plan Settings
+action_plan:
+  phases:
+    phase_30:
+      title: "Primeros 30 Días"
+      subtitle: "Acciones inmediatas de alto impacto"
+    phase_60:
+      title: "Días 31-60"
+      subtitle: "Optimizaciones técnicas y de contenido"
+    phase_90:
+      title: "Días 61-90"
+      subtitle: "Estrategia a largo plazo"
+
+# PageSpeed Thresholds
+pagespeed:
+  excellent: 90
+  good: 70
+  needs_work: 50
+  critical: 0
+
+# Core Web Vitals Thresholds
+core_web_vitals:
+  lcp:
+    excellent: 2.5
+    good: 4.0
+    needs_work: 6.0
+  fid:
+    excellent: 100
+    good: 200
+    needs_work: 300
+  cls:
+    excellent: 0.1
+    good: 0.25
+    needs_work: 0.5

@@ -1,0 +1,38 @@
+<!-- SECTION 01: Executive Summary - Resumen Ejecutivo -->
+<div class="card-section">
+    <div class="card-section-header">
+        <span class="icon">📊</span>
+        <h2>Resumen Ejecutivo</h2>
+    </div>
+
+    <p class="text-muted mb-6">{{ executive_summary_text }}</p>
+
+    <div class="stats">
+        {% for stat in summary_stats %}
+        <div class="stat-box {{ stat.class }}">
+            <div class="stat-box-icon">{{ stat.icon }}</div>
+            <div class="number">{{ stat.value }}</div>
+            <div class="label">{{ stat.label }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="findings-grid mt-6">
+        {% for highlight in key_highlights %}
+        <div class="finding-card {{ highlight.severity }}">
+            <span class="severity-badge {{ highlight.severity }}">{{ highlight.severity_label }}</span>
+            <h4>{{ highlight.title }}</h4>
+            <p>{{ highlight.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="mt-6" style="background: var(--gray-50); border-radius: 12px; padding: var(--space-6);">
+        <h4 style="margin-bottom: var(--space-4);">🎯 Objetivos Principales</h4>
+        <ul style="padding-left: var(--space-6); margin: 0;">
+            {% for objective in primary_objectives %}
+            <li style="margin-bottom: var(--space-2); color: var(--gray-700);">{{ objective }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

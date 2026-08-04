@@ -1,0 +1,146 @@
+/* ============================================================
+   SEO AUDIT TOOL - Stat Box Component
+   ============================================================
+   KPIs en grid responsive para métricas clave.
+   ============================================================ */
+
+/* ==========================================================
+   STATS GRID
+   ========================================================== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-5);
+  padding: var(--space-8) var(--space-10);
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+/* ==========================================================
+   STAT BOX
+   ========================================================== */
+.stat-box {
+  background: white;
+  padding: var(--space-5);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: var(--shadow-stat);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.stat-box:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-box .number {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.stat-box .label {
+  font-size: var(--font-size-sm);
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ==========================================================
+   STAT BOX VARIANTS
+   ========================================================== */
+.stat-box.stat-success .number {
+  color: var(--success);
+}
+
+.stat-box.stat-warning .number {
+  color: var(--warning);
+}
+
+.stat-box.stat-danger .number {
+  color: var(--danger);
+}
+
+.stat-box.stat-info .number {
+  color: var(--info);
+}
+
+/* ==========================================================
+   STAT BOX WITH ICON
+   ========================================================== */
+.stat-box-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto var(--space-3);
+  background: var(--primary-50);
+  border-radius: 12px;
+  font-size: var(--font-size-2xl);
+}
+
+.stat-box.stat-success .stat-box-icon {
+  background: var(--success-50);
+}
+
+.stat-box.stat-warning .stat-box-icon {
+  background: var(--warning-50);
+}
+
+.stat-box.stat-danger .stat-box-icon {
+  background: var(--danger-50);
+}
+
+/* ==========================================================
+   STAT BOX MINI
+   ========================================================== */
+.stat-box-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background: var(--gray-100);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+}
+
+.stat-box-mini .number {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--gray-700);
+}
+
+.stat-box-mini .label {
+  font-size: var(--font-size-xs);
+  color: var(--gray-500);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .stats {
+    padding: var(--space-5);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-box {
+    padding: var(--space-4);
+  }
+
+  .stat-box .number {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,282 @@
+/* ============================================================
+   SEO AUDIT TOOL - Badges Component
+   ============================================================
+   Badges de posición, relevancia y severidad.
+   ============================================================ */
+
+/* ==========================================================
+   BASE BADGE
+   ========================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+}
+
+/* ==========================================================
+   POSITION BADGES
+   ========================================================== */
+.position-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+}
+
+.position-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Excellent: Position 11-15 */
+.position-badge.excellent {
+  background: var(--position-excellent-bg);
+  color: var(--position-excellent-fg);
+}
+
+.position-badge.excellent::before {
+  background: var(--position-excellent-dot);
+}
+
+/* Good: Position 16-20 */
+.position-badge.good {
+  background: var(--position-good-bg);
+  color: var(--position-good-fg);
+}
+
+.position-badge.good::before {
+  background: var(--position-good-dot);
+}
+
+/* Needs Work: Position 21-30 */
+.position-badge.needs-work {
+  background: var(--position-needs-work-bg);
+  color: var(--position-needs-work-fg);
+}
+
+.position-badge.needs-work::before {
+  background: var(--position-needs-work-dot);
+}
+
+/* ==========================================================
+   RELEVANCE TAGS
+   ========================================================== */
+.relevance-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.relevance-tag.high {
+  background: var(--relevance-high-bg);
+  color: var(--relevance-high-fg);
+}
+
+.relevance-tag.medium {
+  background: var(--relevance-medium-bg);
+  color: var(--relevance-medium-fg);
+}
+
+.relevance-tag.low {
+  background: var(--relevance-low-bg);
+  color: var(--relevance-low-fg);
+}
+
+/* ==========================================================
+   SEVERITY BADGES
+   ========================================================== */
+.severity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.severity-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.severity-badge.critical {
+  background: var(--critical-bg);
+  color: var(--critical-fg);
+}
+
+.severity-badge.critical::before {
+  background: var(--critical-icon);
+}
+
+.severity-badge.high {
+  background: var(--high-bg);
+  color: var(--high-fg);
+}
+
+.severity-badge.high::before {
+  background: var(--high-icon);
+}
+
+.severity-badge.medium {
+  background: var(--medium-bg);
+  color: var(--medium-fg);
+}
+
+.severity-badge.medium::before {
+  background: var(--medium-icon);
+}
+
+.severity-badge.low {
+  background: var(--low-bg);
+  color: var(--low-fg);
+}
+
+.severity-badge.low::before {
+  background: var(--low-icon);
+}
+
+.severity-badge.pass {
+  background: var(--pass-bg);
+  color: var(--pass-fg);
+}
+
+.severity-badge.pass::before {
+  background: var(--pass-icon);
+}
+
+/* ==========================================================
+   PRIORITY BADGES
+   ========================================================== */
+.priority-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.priority-badge.p0 {
+  background: var(--danger-100);
+  color: var(--danger-800);
+}
+
+.priority-badge.p1 {
+  background: var(--warning-100);
+  color: var(--warning-800);
+}
+
+.priority-badge.p2 {
+  background: var(--info-100);
+  color: var(--info-800);
+}
+
+.priority-badge.p3 {
+  background: var(--gray-200);
+  color: var(--gray-700);
+}
+
+/* ==========================================================
+   SCORE BADGES
+   ========================================================== */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: white;
+}
+
+.score-badge.excellent {
+  background: var(--success);
+}
+
+.score-badge.good {
+  background: var(--primary);
+}
+
+.score-badge.needs-work {
+  background: var(--warning);
+}
+
+.score-badge.critical {
+  background: var(--danger);
+}
+
+/* ==========================================================
+   STATUS DOTS
+   ========================================================== */
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status-dot.green {
+  background: var(--success);
+}
+
+.status-dot.yellow {
+  background: var(--warning);
+}
+
+.status-dot.red {
+  background: var(--danger);
+}
+
+.status-dot.blue {
+  background: var(--info);
+}
+
+.status-dot.gray {
+  background: var(--gray-400);
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .badge,
+  .position-badge,
+  .relevance-tag,
+  .severity-badge,
+  .priority-badge {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+  }
+
+  .score-badge {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-base);
+  }
+}

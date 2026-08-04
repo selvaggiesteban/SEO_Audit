@@ -1,0 +1,169 @@
+# SEO Audit Tool - Scoring Weights Configuration
+# ================================================
+# 
+# Ponderaciones para el cálculo de la puntuación SEO.
+# Total debe sumar 100.
+#
+# Cada dimensión tiene un peso que refleja su importancia
+# relativa en el posicionamiento general.
+
+# Dimensiones de análisis
+dimensions:
+  posicionamiento:
+    weight: 25
+    description: "Posicionamiento general en resultados de búsqueda"
+    source: "Google Search Console"
+    factors:
+      - name: "average_position"
+        weight: 40
+        description: "Posición promedio de las keywords"
+      - name: "position_distribution"
+        weight: 30
+        description: "Distribución de keywords por rangos de posición"
+      - name: "average_ctr"
+        weight: 30
+        description: "CTR promedio en resultados de búsqueda"
+
+  palabras_clave:
+    weight: 20
+    description: "Análisis de palabras clave filtradas"
+    source: "Google Search Console"
+    factors:
+      - name: "filtered_keywords_count"
+        weight: 40
+        description: "Cantidad de keywords filtradas"
+      - name: "excellent_position_ratio"
+        weight: 35
+        description: "Proporción de keywords en posición excelente (11-15)"
+      - name: "opportunity_score"
+        weight: 25
+        description: "Puntuación de oportunidad de mejora"
+
+  contenido:
+    weight: 15
+    description: "Calidad y rendimiento del contenido"
+    source: "GA4 + GSC"
+    factors:
+      - name: "engagement_rate"
+        weight: 40
+        description: "Tasa de engagement de usuarios"
+      - name: "page_performance"
+        weight: 35
+        description: "Rendimiento de páginas individuales"
+      - name: "content_freshness"
+        weight: 25
+        description: "Frecuencia de actualización del contenido"
+
+  seo_tecnico:
+    weight: 15
+    description: "Aspectos técnicos del SEO"
+    source: "PageSpeed Insights"
+    factors:
+      - name: "mobile_score"
+        weight: 50
+        description: "Puntuación de PageSpeed para móvil"
+      - name: "desktop_score"
+        weight: 50
+        description: "Puntuación de PageSpeed para escritorio"
+
+  experiencia_usuario:
+    weight: 10
+    description: "Experiencia de usuario del sitio"
+    source: "Core Web Vitals"
+    factors:
+      - name: "lcp"
+        weight: 40
+        description: "Largest Contentful Paint"
+      - name: "fid"
+        weight: 30
+        description: "First Input Delay"
+      - name: "cls"
+        weight: 30
+        description: "Cumulative Layout Shift"
+
+  enlaces:
+    weight: 10
+    description: "Estructura de enlaces internos y externos"
+    source: "GSC + External"
+    factors:
+      - name: "internal_links"
+        weight: 50
+        description: "Calidad de enlaces internos"
+      - name: "external_links"
+        weight: 30
+        description: "Enlaces externos relevantes"
+      - name: "backlinks"
+        weight: 20
+        description: "Backlinks de autoridad"
+
+  competencia:
+    weight: 5
+    description: "Posición relativa frente a competidores"
+    source: "Market Analysis"
+    factors:
+      - name: "market_share"
+        weight: 50
+        description: "Cuota de mercado estimada"
+      - name: "competitive_keywords"
+        weight: 50
+        description: "Keywords competitivas"
+
+# Categorías de puntuación
+score_categories:
+  excellent:
+    min: 90
+    max: 100
+    label: "Excelente"
+    color: "#10B981"
+    description: "El sitio tiene un SEO muy bien optimizado"
+  
+  good:
+    min: 70
+    max: 89
+    label: "Bueno"
+    color: "#3B82F6"
+    description: "El sitio tiene un buen SEO con espacio de mejora"
+  
+  needs_work:
+    min: 50
+    max: 69
+    label: "Necesita Mejoras"
+    color: "#F59E0B"
+    description: "El sitio necesita optimizaciones significativas"
+  
+  critical:
+    min: 0
+    max: 49
+    label: "Crítico"
+    color: "#EF4444"
+    description: "El sitio tiene problemas críticos de SEO"
+
+# Prioridades de acción
+priorities:
+  p0:
+    label: "P0 - Crítico"
+    impact: "high"
+    effort: "low"
+    timeline: "30 días"
+    description: "Acciones inmediatas de alto impacto y bajo esfuerzo"
+  
+  p1:
+    label: "P1 - Alto"
+    impact: "high"
+    effort: "medium"
+    timeline: "30-60 días"
+    description: "Acciones importantes de alto impacto"
+  
+  p2:
+    label: "P2 - Medio"
+    impact: "medium"
+    effort: "medium"
+    timeline: "60-90 días"
+    description: "Optimizaciones de impacto medio"
+  
+  p3:
+    label: "P3 - Bajo"
+    impact: "low"
+    effort: "high"
+    timeline: "90+ días"
+    description: "Mejoras a largo plazo"

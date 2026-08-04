@@ -1,0 +1,91 @@
+<!-- SECTION 08: Competition Analysis - Análisis de Competencia -->
+<div class="card-section">
+    <div class="card-section-header">
+        <span class="icon">⚔️</span>
+        <h2>Análisis de Competencia</h2>
+    </div>
+
+    <p class="text-muted mb-6">{{ competition_intro }}</p>
+
+    <div class="table-container mb-6">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Competidor</th>
+                    <th>Tráfico Estimado</th>
+                    <th>Palabras Clave</th>
+                    <th>Backlinks</th>
+                    <th>Autoridad</th>
+                    <th>Posición Prom.</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for competitor in competitors %}
+                <tr{% if competitor.is_your_site %} style="background: var(--primary-50);"{% endif %}>
+                    <td class="font-semibold">
+                        {{ competitor.name }}
+                        {% if competitor.is_your_site %}
+                        <span class="badge" style="background: var(--primary-100); color: var(--primary-800); margin-left: var(--space-2);">Tu Sitio</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ competitor.traffic }}</td>
+                    <td>{{ competitor.keywords }}</td>
+                    <td>{{ competitor.backlinks }}</td>
+                    <td>
+                        <span class="score-badge {{ competitor.authority_class }}">{{ competitor.authority }}</span>
+                    </td>
+                    <td>
+                        <span class="position-badge {{ competitor.position_class }}">{{ competitor.avg_position }}</span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h4>Palabras Clave Competitivas</h4>
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Palabra Clave</th>
+                    <th>Tu Posición</th>
+                    <th>Competidor #1</th>
+                    <th>Competidor #2</th>
+                    <th>Volumen</th>
+                    <th>Oportunidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for kw in competitive_keywords %}
+                <tr>
+                    <td class="query-text">{{ kw.query }}</td>
+                    <td>
+                        <span class="position-badge {{ kw.your_position_class }}">{{ kw.your_position }}</span>
+                    </td>
+                    <td>
+                        <span class="text-sm">{{ kw.competitor1_name }}: {{ kw.competitor1_position }}</span>
+                    </td>
+                    <td>
+                        <span class="text-sm">{{ kw.competitor2_name }}: {{ kw.competitor2_position }}</span>
+                    </td>
+                    <td>{{ kw.volume }}</td>
+                    <td>
+                        <span class="relevance-tag {{ kw.opportunity_class }}">{{ kw.opportunity_label }}</span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="findings-grid mt-6">
+        {% for insight in competitive_insights %}
+        <div class="finding-card {{ insight.severity }}">
+            <span class="severity-badge {{ insight.severity }}">{{ insight.severity_label }}</span>
+            <h4>{{ insight.title }}</h4>
+            <p>{{ insight.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
