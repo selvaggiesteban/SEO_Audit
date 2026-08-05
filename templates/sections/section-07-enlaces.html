@@ -1,90 +1,83 @@
 <!-- SECTION 07: Links & Authority - Enlaces y Autoridad -->
-<div class="card-section">
-    <div class="card-section-header">
-        <span class="icon">🔗</span>
-        <h2>Análisis de Enlaces y Autoridad</h2>
+<div class="stats mb-6">
+    {% for stat in link_stats %}
+    <div class="stat-box {{ stat.class }}">
+        <div class="stat-box-icon">{{ stat.icon }}</div>
+        <div class="number">{{ stat.value }}</div>
+        <div class="label">{{ stat.label }}</div>
     </div>
+    {% endfor %}
+</div>
 
-    <div class="stats mb-6">
-        {% for stat in link_stats %}
-        <div class="stat-box {{ stat.class }}">
-            <div class="stat-box-icon">{{ stat.icon }}</div>
-            <div class="number">{{ stat.value }}</div>
-            <div class="label">{{ stat.label }}</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-5); margin-bottom: var(--space-6);">
+    <div style="background: white; border-radius: 12px; padding: var(--space-5); box-shadow: var(--shadow-sm);">
+        <h4 style="margin-bottom: var(--space-4);">📊 Distribución de Enlaces</h4>
+        {% for segment in link_distribution %}
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-2) 0; border-bottom: 1px solid var(--gray-100);">
+            <span class="text-sm">{{ segment.label }}</span>
+            <div style="display: flex; align-items: center; gap: var(--space-2);">
+                <div style="width: 100px; height: 6px; background: var(--gray-200); border-radius: 3px; overflow: hidden;">
+                    <div style="width: {{ segment.percentage }}%; height: 100%; background: {{ segment.color }}; border-radius: 3px;"></div>
+                </div>
+                <span class="text-sm font-semibold">{{ segment.count }}</span>
+            </div>
         </div>
         {% endfor %}
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-5); margin-bottom: var(--space-6);">
-        <div style="background: white; border-radius: 12px; padding: var(--space-5); box-shadow: var(--shadow-sm);">
-            <h4 style="margin-bottom: var(--space-4);">📊 Distribución de Enlaces</h4>
-            {% for segment in link_distribution %}
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-2) 0; border-bottom: 1px solid var(--gray-100);">
-                <span class="text-sm">{{ segment.label }}</span>
-                <div style="display: flex; align-items: center; gap: var(--space-2);">
-                    <div style="width: 100px; height: 6px; background: var(--gray-200); border-radius: 3px; overflow: hidden;">
-                        <div style="width: {{ segment.percentage }}%; height: 100%; background: {{ segment.color }}; border-radius: 3px;"></div>
-                    </div>
-                    <span class="text-sm font-semibold">{{ segment.count }}</span>
-                </div>
+    <div style="background: white; border-radius: 12px; padding: var(--space-5); box-shadow: var(--shadow-sm);">
+        <h4 style="margin-bottom: var(--space-4);">🏆 Dominios de Mayor Autoridad</h4>
+        {% for domain in top_referring_domains %}
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-2) 0; border-bottom: 1px solid var(--gray-100);">
+            <span class="text-sm font-medium">{{ domain.name }}</span>
+            <div style="display: flex; gap: var(--space-3); align-items: center;">
+                <span class="stat-box-mini">
+                    <span class="number">{{ domain.links }}</span>
+                    <span class="label">enlaces</span>
+                </span>
+                <span class="score-badge {{ domain.authority_class }}" style="width: 32px; height: 32px; font-size: var(--font-size-sm);">{{ domain.authority }}</span>
             </div>
-            {% endfor %}
-        </div>
-
-        <div style="background: white; border-radius: 12px; padding: var(--space-5); box-shadow: var(--shadow-sm);">
-            <h4 style="margin-bottom: var(--space-4);">🏆 Dominios de Mayor Autoridad</h4>
-            {% for domain in top_referring_domains %}
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-2) 0; border-bottom: 1px solid var(--gray-100);">
-                <span class="text-sm font-medium">{{ domain.name }}</span>
-                <div style="display: flex; gap: var(--space-3); align-items: center;">
-                    <span class="stat-box-mini">
-                        <span class="number">{{ domain.links }}</span>
-                        <span class="label">enlaces</span>
-                    </span>
-                    <span class="score-badge {{ domain.authority_class }}" style="width: 32px; height: 32px; font-size: var(--font-size-sm);">{{ domain.authority }}</span>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-
-    <h4>Enlaces Internos Más Importantes</h4>
-    <div class="table-container">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Página</th>
-                    <th>Enlaces Internos</th>
-                    <th>Enlaces Entrantes</th>
-                    <th>Autoridad</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for page in internal_links %}
-                <tr>
-                    <td class="query-text" style="max-width: 250px;">{{ page.path }}</td>
-                    <td>{{ page.internal_links }}</td>
-                    <td>{{ page.incoming_links }}</td>
-                    <td>
-                        <span class="score-badge {{ page.authority_class }}">{{ page.authority }}</span>
-                    </td>
-                    <td>
-                        <span class="severity-badge {{ page.status_class }}">{{ page.status_label }}</span>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <div class="findings-grid mt-6">
-        {% for finding in link_findings %}
-        <div class="finding-card {{ finding.severity }}">
-            <span class="severity-badge {{ finding.severity }}">{{ finding.severity_label }}</span>
-            <h4>{{ finding.title }}</h4>
-            <p>{{ finding.description }}</p>
         </div>
         {% endfor %}
     </div>
+</div>
+
+<h4>Enlaces Internos Más Importantes</h4>
+<div class="table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Página</th>
+                <th>Enlaces Internos</th>
+                <th>Enlaces Entrantes</th>
+                <th>Autoridad</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for page in internal_links %}
+            <tr>
+                <td class="query-text" style="max-width: 250px;">{{ page.path }}</td>
+                <td>{{ page.internal_links }}</td>
+                <td>{{ page.incoming_links }}</td>
+                <td>
+                    <span class="score-badge {{ page.authority_class }}">{{ page.authority }}</span>
+                </td>
+                <td>
+                    <span class="severity-badge {{ page.status_class }}">{{ page.status_label }}</span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="findings-grid mt-6">
+    {% for finding in link_findings %}
+    <div class="finding-card {{ finding.severity }}">
+        <span class="severity-badge {{ finding.severity }}">{{ finding.severity_label }}</span>
+        <h4>{{ finding.title }}</h4>
+        <p>{{ finding.description }}</p>
+    </div>
+    {% endfor %}
 </div>

@@ -1,72 +1,65 @@
 <!-- SECTION 02: Positioning Analysis - Análisis de Posicionamiento -->
-<div class="card-section">
-    <div class="card-section-header">
-        <span class="icon">📈</span>
-        <h2>Análisis de Posicionamiento General</h2>
+<div class="stats mb-6">
+    <div class="stat-box">
+        <div class="number">{{ total_clicks }}</div>
+        <div class="label">Clics Totales</div>
     </div>
-
-    <div class="stats mb-6">
-        <div class="stat-box">
-            <div class="number">{{ total_clicks }}</div>
-            <div class="label">Clics Totales</div>
-        </div>
-        <div class="stat-box">
-            <div class="number">{{ total_impressions }}</div>
-            <div class="label">Impresiones</div>
-        </div>
-        <div class="stat-box stat-info">
-            <div class="number">{{ avg_ctr }}</div>
-            <div class="label">CTR Promedio</div>
-        </div>
-        <div class="stat-box stat-warning">
-            <div class="number">{{ avg_position }}</div>
-            <div class="label">Posición Promedio</div>
-        </div>
+    <div class="stat-box">
+        <div class="number">{{ total_impressions }}</div>
+        <div class="label">Impresiones</div>
     </div>
+    <div class="stat-box stat-info">
+        <div class="number">{{ avg_ctr }}</div>
+        <div class="label">CTR Promedio</div>
+    </div>
+    <div class="stat-box stat-warning">
+        <div class="number">{{ avg_position }}</div>
+        <div class="label">Posición Promedio</div>
+    </div>
+</div>
 
-    <h4>Distribución de Posiciones</h4>
-    <div class="table-container">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Rango de Posición</th>
-                    <th>Palabras Clave</th>
-                    <th>Impresiones</th>
-                    <th>Clics</th>
-                    <th>CTR</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for bucket in position_distribution %}
-                <tr>
-                    <td class="font-semibold">{{ bucket.range }}</td>
-                    <td>{{ bucket.keywords }}</td>
-                    <td class="impressions">{{ bucket.impressions }}</td>
-                    <td>{{ bucket.clicks }}</td>
-                    <td>
-                        <div class="ctr-bar">
-                            <span>{{ bucket.ctr }}</span>
-                            <div class="ctr-bar-fill">
-                                <span style="width: {{ bucket.ctr_width }}%"></span>
-                            </div>
+<h4>Distribución de Posiciones</h4>
+<div class="table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Rango de Posición</th>
+                <th>Palabras Clave</th>
+                <th>Impresiones</th>
+                <th>Clics</th>
+                <th>CTR</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bucket in position_distribution %}
+            <tr>
+                <td class="font-semibold">{{ bucket.range }}</td>
+                <td>{{ bucket.keywords }}</td>
+                <td class="impressions">{{ bucket.impressions }}</td>
+                <td>{{ bucket.clicks }}</td>
+                <td>
+                    <div class="ctr-bar">
+                        <span>{{ bucket.ctr }}</span>
+                        <div class="ctr-bar-fill">
+                            <span style="width: {{ bucket.ctr_width }}%"></span>
                         </div>
-                    </td>
-                    <td>
-                        <span class="severity-badge {{ bucket.status_class }}">{{ bucket.status_label }}</span>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <div class="mt-6" style="background: var(--primary-50); border-radius: 12px; padding: var(--space-5);">
-        <h4 style="margin-bottom: var(--space-3); color: var(--primary-800);">💡 Tendencias de Posicionamiento</h4>
-        <ul style="padding-left: var(--space-6); margin: 0;">
-            {% for trend in positioning_trends %}
-            <li style="margin-bottom: var(--space-2); color: var(--gray-700);">{{ trend }}</li>
+                    </div>
+                </td>
+                <td>
+                    <span class="severity-badge {{ bucket.status_class }}">{{ bucket.status_label }}</span>
+                </td>
+            </tr>
             {% endfor %}
-        </ul>
-    </div>
+        </tbody>
+    </table>
+</div>
+
+<div class="mt-6" style="background: var(--primary-50); border-radius: 12px; padding: var(--space-5);">
+    <h4 style="margin-bottom: var(--space-3); color: var(--primary-800);">💡 Tendencias de Posicionamiento</h4>
+    <ul style="padding-left: var(--space-6); margin: 0;">
+        {% for trend in positioning_trends %}
+        <li style="margin-bottom: var(--space-2); color: var(--gray-700);">{{ trend }}</li>
+        {% endfor %}
+    </ul>
 </div>

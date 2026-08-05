@@ -1,67 +1,60 @@
 <!-- SECTION 03: Keyword Analysis - Análisis de Palabras Clave -->
-<div class="card-section">
-    <div class="card-section-header">
-        <span class="icon">🔑</span>
-        <h2>Análisis de Palabras Clave</h2>
+<div class="stats mb-6">
+    {% for stat in keyword_stats %}
+    <div class="stat-box {{ stat.class }}">
+        <div class="number">{{ stat.value }}</div>
+        <div class="label">{{ stat.label }}</div>
     </div>
+    {% endfor %}
+</div>
 
-    <div class="stats mb-6">
-        {% for stat in keyword_stats %}
-        <div class="stat-box {{ stat.class }}">
-            <div class="number">{{ stat.value }}</div>
-            <div class="label">{{ stat.label }}</div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <h4>Top Palabras Clave por Rendimiento</h4>
-    <div class="table-container">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Palabra Clave</th>
-                    <th>Posición</th>
-                    <th>Impresiones</th>
-                    <th>Clics</th>
-                    <th>CTR</th>
-                    <th>Relevancia</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for keyword in keywords %}
-                <tr>
-                    <td class="query-text">{{ keyword.query }}</td>
-                    <td>
-                        <span class="position-badge {{ keyword.position_class }}">{{ keyword.position }}</span>
-                    </td>
-                    <td class="impressions">{{ keyword.impressions }}</td>
-                    <td>{{ keyword.clicks }}</td>
-                    <td>
-                        <div class="ctr-bar">
-                            <span>{{ keyword.ctr }}</span>
-                            <div class="ctr-bar-fill">
-                                <span style="width: {{ keyword.ctr_width }}%"></span>
-                            </div>
+<h4>Top Palabras Clave por Rendimiento</h4>
+<div class="table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Palabra Clave</th>
+                <th>Posición</th>
+                <th>Impresiones</th>
+                <th>Clics</th>
+                <th>CTR</th>
+                <th>Relevancia</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for keyword in keywords %}
+            <tr>
+                <td class="query-text">{{ keyword.query }}</td>
+                <td>
+                    <span class="position-badge {{ keyword.position_class }}">{{ keyword.position }}</span>
+                </td>
+                <td class="impressions">{{ keyword.impressions }}</td>
+                <td>{{ keyword.clicks }}</td>
+                <td>
+                    <div class="ctr-bar">
+                        <span>{{ keyword.ctr }}</span>
+                        <div class="ctr-bar-fill">
+                            <span style="width: {{ keyword.ctr_width }}%"></span>
                         </div>
-                    </td>
-                    <td>
-                        <span class="relevance-tag {{ keyword.relevance_class }}">{{ keyword.relevance_label }}</span>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+                    </div>
+                </td>
+                <td>
+                    <span class="relevance-tag {{ keyword.relevance_class }}">{{ keyword.relevance_label }}</span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
-    <h4 class="mt-6">Palabras Clave de Oportunidad</h4>
-    <p class="text-muted mb-4">Palabras con alto potencial de mejora (posición 8-15):</p>
-    <div class="findings-grid">
-        {% for opportunity in keyword_opportunities %}
-        <div class="finding-card {{ opportunity.priority_class }}">
-            <span class="severity-badge {{ opportunity.priority_class }}">{{ opportunity.priority_label }}</span>
-            <h4>{{ opportunity.query }}</h4>
-            <p>Posición: {{ opportunity.position }} | Impresiones: {{ opportunity.impressions }} | CTR actual: {{ opportunity.current_ctr }}</p>
-        </div>
-        {% endfor %}
+<h4 class="mt-6">Palabras Clave de Oportunidad</h4>
+<p class="text-muted mb-4">Palabras con alto potencial de mejora (posición 8-15):</p>
+<div class="findings-grid">
+    {% for opportunity in keyword_opportunities %}
+    <div class="finding-card {{ opportunity.priority_class }}">
+        <span class="severity-badge {{ opportunity.priority_class }}">{{ opportunity.priority_label }}</span>
+        <h4>{{ opportunity.query }}</h4>
+        <p>Posición: {{ opportunity.position }} | Impresiones: {{ opportunity.impressions }} | CTR actual: {{ opportunity.current_ctr }}</p>
     </div>
+    {% endfor %}
 </div>
