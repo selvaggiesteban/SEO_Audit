@@ -114,10 +114,15 @@ class AuditEngine:
     
     def _collect_gsc_data(self):
         """Recopila datos de Google Search Console."""
+        # Si los datos ya fueron inyectados (ej. desde un script externo),
+        # respetarlos y no sobrescribirlos.
+        if 'gsc' in self.data and self.data['gsc']:
+            return
+
         # En producción, esto llamaría a la API de GSC
         # Por ahora, cargamos desde archivos JSON si existen
         data_file = Path(self.config.output_dir) / "raw-data.json"
-        
+
         if data_file.exists():
             with open(data_file, 'r', encoding='utf-8') as f:
                 self.data['gsc'] = json.load(f)
@@ -132,6 +137,9 @@ class AuditEngine:
     
     def _collect_pagespeed_data(self):
         """Recopila datos de PageSpeed Insights."""
+        # Si los datos ya fueron inyectados, respetarlos.
+        if 'pagespeed' in self.data and self.data['pagespeed']:
+            return
         # Placeholder para integración con PageSpeed API
         self.data['pagespeed'] = self._get_sample_pagespeed_data()
     
