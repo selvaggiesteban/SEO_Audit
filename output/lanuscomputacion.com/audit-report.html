@@ -3,17 +3,2006 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auditoría SEO - lanuscomputacion.com - SEO Audit Report</title>
-    <link rel="stylesheet" href="../css/tokens.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/components/card.css">
-    <link rel="stylesheet" href="../css/components/stat-box.css">
-    <link rel="stylesheet" href="../css/components/badges.css">
-    <link rel="stylesheet" href="../css/components/table.css">
-    <link rel="stylesheet" href="../css/components/cta.css">
-    <link rel="stylesheet" href="../css/components/findings.css">
-    <link rel="stylesheet" href="../css/components/score-gauge.css">
-    <link rel="stylesheet" href="../css/components/plan-timeline.css">
+    <title>Auditoria SEO - lanuscomputacion.com - SEO Audit Report</title>
+    <style>
+/* ===== css/tokens.css ===== */
+/* ============================================================
+   SEO AUDIT TOOL - Design Tokens
+   ============================================================
+   Variables CSS para colores, tipografía, espaciados, sombras
+   y gradientes del sistema de diseño del informe de auditoría.
+   ============================================================ */
+
+:root {
+  /* ==========================================================
+     COLORES PRIMARIOS
+     ========================================================== */
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #3b82f6;
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-200: #bfdbfe;
+  --primary-500: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-800: #1e40af;
+  --primary-900: #1e3a8a;
+
+  /* ==========================================================
+     COLORES SEMÁNTICOS
+     ========================================================== */
+  --success: #10b981;
+  --success-dark: #059669;
+  --success-light: #34d399;
+  --success-50: #ecfdf5;
+  --success-100: #d1fae5;
+  --success-200: #a7f3d0;
+  --success-500: #10b981;
+  --success-600: #059669;
+  --success-700: #047857;
+  --success-800: #065f46;
+  --success-900: #064e3b;
+
+  --warning: #f59e0b;
+  --warning-dark: #d97706;
+  --warning-light: #fbbf24;
+  --warning-50: #fffbeb;
+  --warning-100: #fef3c7;
+  --warning-200: #fde68a;
+  --warning-500: #f59e0b;
+  --warning-600: #d97706;
+  --warning-700: #b45309;
+  --warning-800: #92400e;
+  --warning-900: #78350f;
+
+  --danger: #ef4444;
+  --danger-dark: #dc2626;
+  --danger-light: #f87171;
+  --danger-50: #fef2f2;
+  --danger-100: #fee2e2;
+  --danger-200: #fecaca;
+  --danger-500: #ef4444;
+  --danger-600: #dc2626;
+  --danger-700: #b91c1c;
+  --danger-800: #991b1b;
+  --danger-900: #7f1d1d;
+
+  --info: #3b82f6;
+  --info-dark: #2563eb;
+  --info-light: #60a5fa;
+  --info-50: #eff6ff;
+  --info-100: #dbeafe;
+  --info-200: #bfdbfe;
+  --info-500: #3b82f6;
+  --info-600: #2563eb;
+  --info-700: #1d4ed8;
+  --info-800: #1e40af;
+  --info-900: #1e3a8a;
+
+  /* ==========================================================
+     ESCALA NEUTRA (GRAYS)
+     ========================================================== */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  /* ==========================================================
+     COLORES DE SEVERIDAD (PARA HALLAZGOS)
+     ========================================================== */
+  --critical-bg: #fee2e2;
+  --critical-fg: #991b1b;
+  --critical-border: #fca5a5;
+  --critical-icon: #ef4444;
+
+  --high-bg: #fef3c7;
+  --high-fg: #92400e;
+  --high-border: #fcd34d;
+  --high-icon: #f59e0b;
+
+  --medium-bg: #dbeafe;
+  --medium-fg: #1e40af;
+  --medium-border: #93c5fd;
+  --medium-icon: #3b82f6;
+
+  --low-bg: #e5e7eb;
+  --low-fg: #374151;
+  --low-border: #d1d5db;
+  --low-icon: #6b7280;
+
+  --pass-bg: #d1fae5;
+  --pass-fg: #065f46;
+  --pass-border: #6ee7b7;
+  --pass-icon: #10b981;
+
+  /* ==========================================================
+     COLORES DE POSICIÓN (PARA BADGES)
+     ========================================================== */
+  --position-excellent-bg: #d1fae5;
+  --position-excellent-fg: #065f46;
+  --position-excellent-dot: #10b981;
+
+  --position-good-bg: #fef3c7;
+  --position-good-fg: #92400e;
+  --position-good-dot: #f59e0b;
+
+  --position-needs-work-bg: #fee2e2;
+  --position-needs-work-fg: #991b1b;
+  --position-needs-work-dot: #ef4444;
+
+  /* ==========================================================
+     COLORES DE RELEVANCIA
+     ========================================================== */
+  --relevance-high-bg: #d1fae5;
+  --relevance-high-fg: #065f46;
+
+  --relevance-medium-bg: #fef3c7;
+  --relevance-medium-fg: #92400e;
+
+  --relevance-low-bg: #e5e7eb;
+  --relevance-low-fg: #374151;
+
+  /* ==========================================================
+     TIPOGRAFÍA
+     ========================================================== */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+
+  /* ==========================================================
+     ESPACIADOS
+     ========================================================== */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* ==========================================================
+     BORDER RADIUS
+     ========================================================== */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ==========================================================
+     SOMBRAS
+     ========================================================== */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-stat: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-button-hover: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  /* ==========================================================
+     GRADIENTES
+     ========================================================== */
+  --gradient-body: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  --gradient-success: linear-gradient(135deg, var(--success) 0%, var(--success-dark) 100%);
+  --gradient-warning: linear-gradient(135deg, var(--warning) 0%, var(--warning-dark) 100%);
+  --gradient-danger: linear-gradient(135deg, var(--danger) 0%, var(--danger-dark) 100%);
+  --gradient-header: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+
+  /* ==========================================================
+     TRANSICIONES
+     ========================================================== */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  /* ==========================================================
+     Z-INDEX
+     ========================================================== */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* ==========================================================
+     BREAKPOINTS (para referencia en media queries)
+     ========================================================== */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* ==========================================================
+     CONTAINER
+     ========================================================== */
+  --container-max-width: 1100px;
+  --container-padding: var(--space-5);
+}
+
+/* ==========================================================
+   DARK MODE (futuro)
+   ========================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Placeholder para dark mode */
+    /* --bg-primary: var(--gray-900); */
+    /* --text-primary: var(--gray-50); */
+  }
+}
+
+
+/* ===== css/base.css ===== */
+/* ============================================================
+   SEO AUDIT TOOL - Base Styles
+   ============================================================
+   Reset CSS, tipografía base, y estilos globales.
+   ============================================================ */
+
+/* ==========================================================
+   CSS RESET
+   ========================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--gray-900);
+  background: var(--gradient-body);
+  min-height: 100vh;
+  padding: var(--space-10) var(--space-5);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================
+   TIPOGRAFÍA
+   ========================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--gray-900);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-5);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-3);
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+h5 {
+  font-size: var(--font-size-base);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+h6 {
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+p {
+  margin-bottom: var(--space-4);
+  line-height: var(--line-height-relaxed);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+em {
+  font-style: italic;
+}
+
+small {
+  font-size: var(--font-size-sm);
+}
+
+code {
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  background: var(--gray-100);
+  border-radius: var(--radius-md);
+}
+
+pre {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  padding: var(--space-4);
+  background: var(--gray-900);
+  color: var(--gray-50);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  margin-bottom: var(--space-4);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* ==========================================================
+   LISTAS
+   ========================================================== */
+ul, ol {
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-6);
+}
+
+li {
+  margin-bottom: var(--space-2);
+  line-height: var(--line-height-relaxed);
+}
+
+ul li {
+  list-style-type: disc;
+}
+
+ol li {
+  list-style-type: decimal;
+}
+
+/* ==========================================================
+   TABLAS
+   ========================================================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--space-4);
+}
+
+th, td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+th {
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-700);
+  background: var(--gray-50);
+}
+
+td {
+  color: var(--gray-700);
+}
+
+tr:hover td {
+  background: var(--gray-50);
+}
+
+/* ==========================================================
+   IMÁGENES
+   ========================================================== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================
+   UTILIDADES DE TEXTO
+   ========================================================== */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+.text-primary { color: var(--primary); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-danger { color: var(--danger); }
+.text-muted { color: var(--gray-500); }
+
+.font-bold { font-weight: var(--font-weight-bold); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-medium { font-weight: var(--font-weight-medium); }
+
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-base { font-size: var(--font-size-base); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+.text-3xl { font-size: var(--font-size-3xl); }
+.text-4xl { font-size: var(--font-size-4xl); }
+
+/* ==========================================================
+   UTILIDADES DE ESPACIADO
+   ========================================================== */
+.m-0 { margin: 0; }
+.m-1 { margin: var(--space-1); }
+.m-2 { margin: var(--space-2); }
+.m-3 { margin: var(--space-3); }
+.m-4 { margin: var(--space-4); }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--space-1); }
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mt-8 { margin-top: var(--space-8); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--space-1); }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.mb-8 { margin-bottom: var(--space-8); }
+
+.p-0 { padding: 0; }
+.p-1 { padding: var(--space-1); }
+.p-2 { padding: var(--space-2); }
+.p-3 { padding: var(--space-3); }
+.p-4 { padding: var(--space-4); }
+.p-5 { padding: var(--space-5); }
+.p-6 { padding: var(--space-6); }
+.p-8 { padding: var(--space-8); }
+
+.px-4 { padding-left: var(--space-4); padding-right: var(--space-4); }
+.py-4 { padding-top: var(--space-4); padding-bottom: var(--space-4); }
+
+/* ==========================================================
+   UTILIDADES DE DISPLAY
+   ========================================================== */
+.hidden { display: none; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.grid { display: grid; }
+
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end { justify-content: flex-end; }
+
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  body {
+    padding: var(--space-5) var(--space-3);
+  }
+
+  h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  h3 {
+    font-size: var(--font-size-lg);
+  }
+}
+
+
+/* ===== css/components/card.css ===== */
+/* ============================================================
+   SEO AUDIT TOOL - Card Component
+   ============================================================
+   Tarjeta elevada con header gradiente, secciones y footer.
+   ============================================================ */
+
+/* ==========================================================
+   CONTAINER
+   ========================================================== */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+/* ==========================================================
+   CARD
+   ========================================================== */
+.card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* ==========================================================
+   CARD HEADER
+   ========================================================== */
+.card-header {
+  background: var(--gradient-header);
+  color: white;
+  padding: var(--space-8) var(--space-10);
+}
+
+.card-header h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-2);
+  color: white;
+}
+
+.card-header .subtitle {
+  font-size: var(--font-size-lg);
+  opacity: 0.9;
+}
+
+.card-header p {
+  color: white;
+  opacity: 0.9;
+}
+
+/* ==========================================================
+   CARD BODY
+   ========================================================== */
+.card-body {
+  padding: var(--space-8) var(--space-10);
+}
+
+/* ==========================================================
+   CARD SECTION
+   ========================================================== */
+.card-section {
+  padding: var(--space-8) var(--space-10);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.card-section:last-child {
+  border-bottom: none;
+}
+
+.card-section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.card-section-header h2 {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  color: var(--gray-900);
+}
+
+.card-section-header .icon {
+  font-size: var(--font-size-2xl);
+}
+
+/* ==========================================================
+   CARD FOOTER
+   ========================================================== */
+.card-footer {
+  padding: var(--space-8) var(--space-10);
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-200);
+}
+
+.card-footer h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-4);
+  color: var(--gray-900);
+}
+
+/* ==========================================================
+   CARD VARIANTS
+   ========================================================== */
+.card-bordered {
+  border: 1px solid var(--gray-200);
+}
+
+.card-flush {
+  border-radius: 0;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .card-header {
+    padding: var(--space-5);
+  }
+
+  .card-header h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .card-body,
+  .card-section,
+  .card-footer {
+    padding: var(--space-5);
+  }
+
+  .card-section-header h2 {
+    font-size: var(--font-size-xl);
+  }
+}
+
+
+/* ===== css/components/stat-box.css ===== */
+/* ============================================================
+   SEO AUDIT TOOL - Stat Box Component
+   ============================================================
+   KPIs en grid responsive para métricas clave.
+   ============================================================ */
+
+/* ==========================================================
+   STATS GRID
+   ========================================================== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-5);
+  padding: var(--space-8) var(--space-10);
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+/* ==========================================================
+   STAT BOX
+   ========================================================== */
+.stat-box {
+  background: white;
+  padding: var(--space-5);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: var(--shadow-stat);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.stat-box:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-box .number {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.stat-box .label {
+  font-size: var(--font-size-sm);
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ==========================================================
+   STAT BOX VARIANTS
+   ========================================================== */
+.stat-box.stat-success .number {
+  color: var(--success);
+}
+
+.stat-box.stat-warning .number {
+  color: var(--warning);
+}
+
+.stat-box.stat-danger .number {
+  color: var(--danger);
+}
+
+.stat-box.stat-info .number {
+  color: var(--info);
+}
+
+/* ==========================================================
+   STAT BOX WITH ICON
+   ========================================================== */
+.stat-box-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto var(--space-3);
+  background: var(--primary-50);
+  border-radius: 12px;
+  font-size: var(--font-size-2xl);
+}
+
+.stat-box.stat-success .stat-box-icon {
+  background: var(--success-50);
+}
+
+.stat-box.stat-warning .stat-box-icon {
+  background: var(--warning-50);
+}
+
+.stat-box.stat-danger .stat-box-icon {
+  background: var(--danger-50);
+}
+
+/* ==========================================================
+   STAT BOX MINI
+   ========================================================== */
+.stat-box-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background: var(--gray-100);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+}
+
+.stat-box-mini .number {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--gray-700);
+}
+
+.stat-box-mini .label {
+  font-size: var(--font-size-xs);
+  color: var(--gray-500);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .stats {
+    padding: var(--space-5);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-box {
+    padding: var(--space-4);
+  }
+
+  .stat-box .number {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===== css/components/badges.css ===== */
+/* ============================================================
+   SEO AUDIT TOOL - Badges Component
+   ============================================================
+   Badges de posición, relevancia y severidad.
+   ============================================================ */
+
+/* ==========================================================
+   BASE BADGE
+   ========================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+}
+
+/* ==========================================================
+   POSITION BADGES
+   ========================================================== */
+.position-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+}
+
+.position-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Excellent: Position 11-15 */
+.position-badge.excellent {
+  background: var(--position-excellent-bg);
+  color: var(--position-excellent-fg);
+}
+
+.position-badge.excellent::before {
+  background: var(--position-excellent-dot);
+}
+
+/* Good: Position 16-20 */
+.position-badge.good {
+  background: var(--position-good-bg);
+  color: var(--position-good-fg);
+}
+
+.position-badge.good::before {
+  background: var(--position-good-dot);
+}
+
+/* Needs Work: Position 21-30 */
+.position-badge.needs-work {
+  background: var(--position-needs-work-bg);
+  color: var(--position-needs-work-fg);
+}
+
+.position-badge.needs-work::before {
+  background: var(--position-needs-work-dot);
+}
+
+/* ==========================================================
+   RELEVANCE TAGS
+   ========================================================== */
+.relevance-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.relevance-tag.high {
+  background: var(--relevance-high-bg);
+  color: var(--relevance-high-fg);
+}
+
+.relevance-tag.medium {
+  background: var(--relevance-medium-bg);
+  color: var(--relevance-medium-fg);
+}
+
+.relevance-tag.low {
+  background: var(--relevance-low-bg);
+  color: var(--relevance-low-fg);
+}
+
+/* ==========================================================
+   SEVERITY BADGES
+   ========================================================== */
+.severity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.severity-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.severity-badge.critical {
+  background: var(--critical-bg);
+  color: var(--critical-fg);
+}
+
+.severity-badge.critical::before {
+  background: var(--critical-icon);
+}
+
+.severity-badge.high {
+  background: var(--high-bg);
+  color: var(--high-fg);
+}
+
+.severity-badge.high::before {
+  background: var(--high-icon);
+}
+
+.severity-badge.medium {
+  background: var(--medium-bg);
+  color: var(--medium-fg);
+}
+
+.severity-badge.medium::before {
+  background: var(--medium-icon);
+}
+
+.severity-badge.low {
+  background: var(--low-bg);
+  color: var(--low-fg);
+}
+
+.severity-badge.low::before {
+  background: var(--low-icon);
+}
+
+.severity-badge.pass {
+  background: var(--pass-bg);
+  color: var(--pass-fg);
+}
+
+.severity-badge.pass::before {
+  background: var(--pass-icon);
+}
+
+/* ==========================================================
+   PRIORITY BADGES
+   ========================================================== */
+.priority-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.priority-badge.p0 {
+  background: var(--danger-100);
+  color: var(--danger-800);
+}
+
+.priority-badge.p1 {
+  background: var(--warning-100);
+  color: var(--warning-800);
+}
+
+.priority-badge.p2 {
+  background: var(--info-100);
+  color: var(--info-800);
+}
+
+.priority-badge.p3 {
+  background: var(--gray-200);
+  color: var(--gray-700);
+}
+
+/* ==========================================================
+   SCORE BADGES
+   ========================================================== */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: white;
+}
+
+.score-badge.excellent {
+  background: var(--success);
+}
+
+.score-badge.good {
+  background: var(--primary);
+}
+
+.score-badge.needs-work {
+  background: var(--warning);
+}
+
+.score-badge.critical {
+  background: var(--danger);
+}
+
+/* ==========================================================
+   STATUS DOTS
+   ========================================================== */
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status-dot.green {
+  background: var(--success);
+}
+
+.status-dot.yellow {
+  background: var(--warning);
+}
+
+.status-dot.red {
+  background: var(--danger);
+}
+
+.status-dot.blue {
+  background: var(--info);
+}
+
+.status-dot.gray {
+  background: var(--gray-400);
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .badge,
+  .position-badge,
+  .relevance-tag,
+  .severity-badge,
+  .priority-badge {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+  }
+
+  .score-badge {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-base);
+  }
+}
+
+
+/* ===== css/components/table.css ===== */
+/* ============================================================
+   SEO AUDIT TOOL - Table Component
+   ============================================================
+   Tabla de datos con badges de posición, barras CTR y tags
+   de relevancia.
+   ============================================================ */
+
+/* ==========================================================
+   TABLE CONTAINER
+   ========================================================== */
+.table-container {
+  padding: var(--space-8) var(--space-10);
+  overflow-x: auto;
+}
+
+/* ==========================================================
+   DATA TABLE
+   ========================================================== */
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--font-size-base);
+}
+
+.data-table thead th {
+  background: var(--gray-900);
+  color: white;
+  padding: var(--space-4) var(--space-5);
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wider);
+  white-space: nowrap;
+}
+
+.data-table thead th:first-child {
+  border-radius: 8px 0 0 0;
+}
+
+.data-table thead th:last-child {
+  border-radius: 0 8px 0 0;
+}
+
+.data-table tbody tr {
+  transition: all var(--transition-fast);
+}
+
+.data-table tbody tr:hover {
+  background: var(--gray-50);
+}
+
+.data-table tbody td {
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--gray-200);
+  vertical-align: middle;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==========================================================
+   QUERY TEXT
+   ========================================================== */
+.query-text {
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-900);
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+/* ==========================================================
+   IMPRESSIONS
+   ========================================================== */
+.impressions {
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-700);
+}
+
+/* ==========================================================
+   CTR BAR
+   ========================================================== */
+.ctr-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.ctr-bar span {
+  min-width: 50px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-700);
+}
+
+.ctr-bar-fill {
+  height: 6px;
+  background: var(--gray-200);
+  border-radius: 3px;
+  flex: 1;
+  max-width: 80px;
+  overflow: hidden;
+}
+
+.ctr-bar-fill span {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+  border-radius: 3px;
+  min-width: 0;
+}
+
+/* ==========================================================
+   FINDINGS TABLE
+   ========================================================== */
+.findings-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.findings-table thead th {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.findings-table tbody td {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--gray-200);
+  vertical-align: top;
+}
+
+.findings-table tbody tr:hover {
+  background: var(--gray-50);
+}
+
+.findings-table .finding-title {
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-900);
+  margin-bottom: var(--space-1);
+}
+
+.findings-table .finding-description {
+  font-size: var(--font-size-sm);
+  color: var(--gray-600);
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .table-container {
+    padding: var(--space-5);
+  }
+
+  .data-table {
+    font-size: var(--font-size-sm);
+  }
+
+  .data-table thead th,
+  .data-table tbody td {
+    padding: var(--space-3) var(--space-3);
+  }
+}
+
+
+/* ===== css/components/cta.css ===== */
+/* ============================================================
+   SEO AUDIT TOOL - CTA Component
+   ============================================================
+   Call-to-action con gradiente y estilos interactivos.
+   ============================================================ */
+
+/* ==========================================================
+   CTA BOX
+   ========================================================== */
+.cta-box {
+  background: var(--gradient-primary);
+  color: white;
+  padding: var(--space-8) var(--space-10);
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.cta-box h3 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-4);
+  color: white;
+}
+
+.cta-box p {
+  font-size: var(--font-size-lg);
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto var(--space-6);
+  color: white;
+}
+
+.cta-box .icon {
+  font-size: 4rem;
+  margin-bottom: var(--space-4);
+}
+
+/* ==========================================================
+   CTA BUTTONS
+   ========================================================== */
+.cta-buttons {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: 8px;
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.cta-button-primary {
+  background: white;
+  color: var(--primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button-primary:hover {
+  background: var(--gray-50);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: var(--primary-dark);
+}
+
+.cta-button-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+/* ==========================================================
+   CTA MINI
+   ========================================================== */
+.cta-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.cta-mini:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  color: white;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .cta-box {
+    padding: var(--space-5);
+  }
+
+  .cta-box h3 {
+    font-size: var(--font-size-xl);
+  }
+
+  .cta-box p {
+    font-size: var(--font-size-base);
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+    max-width: 280px;
+  }
+}
+
+
+/* ===== css/components/findings.css ===== */
+/* ============================================================
+   SEO AUDIT TOOL - Findings Component
+   ============================================================
+   Panel de hallazgos con grid responsive para problemas y
+   oportunidades.
+   ============================================================ */
+
+/* ==========================================================
+   FINDINGS GRID
+   ========================================================== */
+.findings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+/* ==========================================================
+   FINDING CARD
+   ========================================================== */
+.finding-card {
+  background: white;
+  border-radius: 12px;
+  padding: var(--space-5);
+  border-left: 4px solid var(--gray-300);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.finding-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.finding-card .severity {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--space-2);
+}
+
+.finding-card h4 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-900);
+  margin-bottom: var(--space-2);
+}
+
+.finding-card p {
+  font-size: var(--font-size-sm);
+  color: var(--gray-600);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* ==========================================================
+   SEVERITY COLORS
+   ========================================================== */
+.finding-card.critical {
+  border-left-color: var(--danger);
+}
+
+.finding-card.critical .severity {
+  color: var(--danger);
+}
+
+.finding-card.high {
+  border-left-color: var(--warning);
+}
+
+.finding-card.high .severity {
+  color: var(--warning);
+}
+
+.finding-card.medium {
+  border-left-color: var(--info);
+}
+
+.finding-card.medium .severity {
+  color: var(--info);
+}
+
+.finding-card.low {
+  border-left-color: var(--gray-400);
+}
+
+.finding-card.low .severity {
+  color: var(--gray-500);
+}
+
+.finding-card.pass {
+  border-left-color: var(--success);
+}
+
+.finding-card.pass .severity {
+  color: var(--success);
+}
+
+/* ==========================================================
+   FINDINGS SUMMARY
+   ========================================================== */
+.findings-summary {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.findings-summary-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--gray-100);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+}
+
+.findings-summary-item .count {
+  font-weight: var(--font-weight-bold);
+  color: var(--gray-900);
+}
+
+.findings-summary-item .label {
+  color: var(--gray-600);
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .findings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .findings-summary {
+    flex-direction: column;
+  }
+}
+
+
+/* ===== css/components/score-gauge.css ===== */
+/* ============================================================
+   SEO AUDIT TOOL - Score Gauge Component
+   ============================================================
+   Gauge SVG animado para la puntuación SEO general.
+   ============================================================ */
+
+/* ==========================================================
+   SCORE GAUGE CONTAINER
+   ========================================================== */
+.score-gauge-container {
+  text-align: center;
+  padding: var(--space-8) var(--space-10);
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+/* ==========================================================
+   SCORE GAUGE
+   ========================================================== */
+.score-gauge {
+  position: relative;
+  width: 200px;
+  height: 120px;
+  margin: 0 auto var(--space-4);
+}
+
+.score-gauge svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.score-gauge-bg {
+  fill: none;
+  stroke: var(--gray-200);
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.score-gauge-fill {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 1.5s ease-in-out;
+}
+
+.score-gauge-fill.excellent {
+  stroke: var(--success);
+}
+
+.score-gauge-fill.good {
+  stroke: var(--primary);
+}
+
+.score-gauge-fill.needs-work {
+  stroke: var(--warning);
+}
+
+.score-gauge-fill.critical {
+  stroke: var(--danger);
+}
+
+/* ==========================================================
+   SCORE VALUE
+   ========================================================== */
+.score-value {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+}
+
+.score-value.excellent {
+  color: var(--success);
+}
+
+.score-value.good {
+  color: var(--primary);
+}
+
+.score-value.needs-work {
+  color: var(--warning);
+}
+
+.score-value.critical {
+  color: var(--danger);
+}
+
+/* ==========================================================
+   SCORE LABEL
+   ========================================================== */
+.score-label {
+  font-size: var(--font-size-lg);
+  color: var(--gray-600);
+  font-weight: var(--font-weight-semibold);
+}
+
+.score-description {
+  font-size: var(--font-size-sm);
+  color: var(--gray-500);
+  margin-top: var(--space-2);
+}
+
+/* ==========================================================
+   SCORE BREAKDOWN
+   ========================================================== */
+.score-breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.score-breakdown-item {
+  text-align: center;
+}
+
+.score-breakdown-item .weight {
+  font-size: var(--font-size-xs);
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--space-1);
+}
+
+.score-breakdown-item .dimension {
+  font-size: var(--font-size-sm);
+  color: var(--gray-700);
+  font-weight: var(--font-weight-medium);
+}
+
+.score-breakdown-item .dimension-score {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .score-gauge-container {
+    padding: var(--space-5);
+  }
+
+  .score-gauge {
+    width: 160px;
+    height: 100px;
+  }
+
+  .score-value {
+    font-size: var(--font-size-3xl);
+  }
+
+  .score-breakdown {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ===== css/components/plan-timeline.css ===== */
+/* ============================================================
+   SEO AUDIT TOOL - Plan Timeline Component
+   ============================================================
+   Timeline para el plan de acción 30/60/90 días con cards
+   de prioridad P0-P3.
+   ============================================================ */
+
+/* ==========================================================
+   PLAN TIMELINE
+   ========================================================== */
+.plan-timeline {
+  position: relative;
+  padding: var(--space-8) var(--space-10);
+}
+
+/* ==========================================================
+   TIMELINE PHASE
+   ========================================================== */
+.timeline-phase {
+  position: relative;
+  margin-bottom: var(--space-8);
+  padding-left: var(--space-8);
+}
+
+.timeline-phase::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gray-200);
+}
+
+.timeline-phase:last-child::before {
+  bottom: auto;
+  height: 24px;
+}
+
+/* ==========================================================
+   PHASE HEADER
+   ========================================================== */
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  position: relative;
+}
+
+.phase-header::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-8) - 6px);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+  background: white;
+  z-index: 1;
+}
+
+.timeline-phase.active .phase-header::before {
+  background: var(--primary);
+}
+
+.phase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--primary);
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.phase-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--gray-900);
+  margin: 0;
+}
+
+.phase-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--gray-500);
+  margin: 0;
+}
+
+/* ==========================================================
+   TASKS LIST
+   ========================================================== */
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ==========================================================
+   TASK CARD
+   ========================================================== */
+.task-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-4) var(--space-5);
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--gray-300);
+  transition: all var(--transition-fast);
+}
+
+.task-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
+
+.task-card .task-content h4 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-900);
+  margin: 0 0 var(--space-1) 0;
+}
+
+.task-card .task-content p {
+  font-size: var(--font-size-sm);
+  color: var(--gray-600);
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+/* ==========================================================
+   PRIORITY COLORS
+   ========================================================== */
+.task-card.p0 {
+  border-left-color: var(--danger);
+}
+
+.task-card.p1 {
+  border-left-color: var(--warning);
+}
+
+.task-card.p2 {
+  border-left-color: var(--info);
+}
+
+.task-card.p3 {
+  border-left-color: var(--gray-400);
+}
+
+/* ==========================================================
+   EFFORT BADGE
+   ========================================================== */
+.effort-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  background: var(--gray-100);
+  color: var(--gray-600);
+  white-space: nowrap;
+}
+
+.effort-badge.low {
+  background: var(--success-50);
+  color: var(--success-700);
+}
+
+.effort-badge.medium {
+  background: var(--warning-50);
+  color: var(--warning-700);
+}
+
+.effort-badge.high {
+  background: var(--danger-50);
+  color: var(--danger-700);
+}
+
+/* ==========================================================
+   TASK META
+   ========================================================== */
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+  .plan-timeline {
+    padding: var(--space-5);
+  }
+
+  .timeline-phase {
+    padding-left: var(--space-6);
+  }
+
+  .phase-header::before {
+    left: calc(-1 * var(--space-6) - 6px);
+  }
+
+  .task-card {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .task-meta {
+    justify-content: flex-start;
+  }
+}
+
+
+</style>
     <style>
         .audit-meta {
             display: flex;
@@ -44,8 +2033,8 @@
         <div class="card">
             <!-- HEADER -->
             <div class="card-header">
-                <h1>Auditoría SEO - lanuscomputacion.com</h1>
-                <p class="subtitle">Análisis completo de posicionamiento web</p>
+                <h1>Auditoria SEO - lanuscomputacion.com</h1>
+                <p class="subtitle">Analisis completo de posicionamiento web</p>
                 <div class="audit-meta">
                     <div class="audit-meta-item">
                         <span>🌐</span>
@@ -69,45 +2058,188 @@
                         <path class="score-gauge-bg" d="M10,50 A40,40 0 0,1 90,50" />
                         <path class="score-gauge-fill needs-work" 
                               d="M10,50 A40,40 0 0,1 90,50"
-                              style="stroke-dashoffset: 87.72999999999999" />
+                              style="stroke-dashoffset: 87" />
                     </svg>
                     <div class="score-value needs-work">69</div>
                 </div>
                 <div class="score-label">Necesita Mejoras</div>
-                <div class="score-description">Puntuación basada en 7 dimensiones de análisis</div>
+                <div class="score-description">Puntuacion basada en 7 dimensiones de analisis</div>
                 
                 <!-- Score Breakdown -->
                 <div class="score-breakdown">
-                    {% for dimension in dimensions %}
+                    
                     <div class="score-breakdown-item">
-                        <div class="weight">{{ dimension.weight }}%</div>
-                        <div class="dimension">{{ dimension.name }}</div>
-                        <div class="dimension-score {{ dimension.score_class }}">{{ dimension.score }}</div>
+                        <div class="weight">25%</div>
+                        <div class="dimension">Posicionamiento</div>
+                        <div class="dimension-score good">70</div>
                     </div>
-                    {% endfor %}
+                    
+                    <div class="score-breakdown-item">
+                        <div class="weight">20%</div>
+                        <div class="dimension">Palabras Clave</div>
+                        <div class="dimension-score excellent">100</div>
+                    </div>
+                    
+                    <div class="score-breakdown-item">
+                        <div class="weight">15%</div>
+                        <div class="dimension">Contenido</div>
+                        <div class="dimension-score needs-work">60</div>
+                    </div>
+                    
+                    <div class="score-breakdown-item">
+                        <div class="weight">15%</div>
+                        <div class="dimension">SEO Tecnico</div>
+                        <div class="dimension-score needs-work">58</div>
+                    </div>
+                    
+                    <div class="score-breakdown-item">
+                        <div class="weight">10%</div>
+                        <div class="dimension">Experiencia Usuario</div>
+                        <div class="dimension-score good">70</div>
+                    </div>
+                    
+                    <div class="score-breakdown-item">
+                        <div class="weight">10%</div>
+                        <div class="dimension">Enlaces</div>
+                        <div class="dimension-score needs-work">50</div>
+                    </div>
+                    
+                    <div class="score-breakdown-item">
+                        <div class="weight">5%</div>
+                        <div class="dimension">Competencia</div>
+                        <div class="dimension-score needs-work">50</div>
+                    </div>
+                    
                 </div>
             </div>
 
             <!-- STATS -->
             <div class="stats">
-                {% for stat in stats %}
-                <div class="stat-box {{ stat.class }}">
-                    <div class="number">{{ stat.value }}</div>
-                    <div class="label">{{ stat.label }}</div>
+                
+                <div class="stat-box stat-success">
+                    <div class="number">30</div>
+                    <div class="label">Clicks Totales</div>
                 </div>
-                {% endfor %}
+                
+                <div class="stat-box stat-success">
+                    <div class="number">937</div>
+                    <div class="label">Impresiones Totales</div>
+                </div>
+                
+                <div class="stat-box stat-success">
+                    <div class="number">3.20%</div>
+                    <div class="label">CTR Promedio</div>
+                </div>
+                
+                <div class="stat-box stat-success">
+                    <div class="number">14.2</div>
+                    <div class="label">Posicion Promedio</div>
+                </div>
+                
+                <div class="stat-box stat-info">
+                    <div class="number">8</div>
+                    <div class="label">Queries Totales</div>
+                </div>
+                
+                <div class="stat-box stat-success">
+                    <div class="number">3</div>
+                    <div class="label">Keywords Filtradas</div>
+                </div>
+                
             </div>
 
             <!-- SECTIONS -->
-            {% for section in sections %}
+            
             <div class="card-section">
                 <div class="card-section-header">
-                    <span class="icon">{{ section.icon }}</span>
-                    <h2>{{ section.title }}</h2>
+                    <span class="icon">[PLAN]</span>
+                    <h2>Resumen Ejecutivo</h2>
                 </div>
-                {{ section.content }}
+                    <div class="table-container"><table class="data-table"><thead><tr><th>Metrica</th><th>Valor</th></tr></thead><tbody><tr><td class="query-text">Puntuacion Total</td><td><span class="score-badge needs-work">69</span></td></tr><tr><td class="query-text">Clicks Totales</td><td class="impressions">30</td></tr><tr><td class="query-text">Impresiones Totales</td><td class="impressions">937</td></tr><tr><td class="query-text">Mejor Dimension</td><td>Palabras Clave (100/100)</td></tr><tr><td class="query-text">Dimension a Mejorar</td><td>Competencia (50/100)</td></tr></tbody></table></div>
+                </div>
             </div>
-            {% endfor %}
+            
+            <div class="card-section">
+                <div class="card-section-header">
+                    <span class="icon">[DATA]</span>
+                    <h2>Posicionamiento General</h2>
+                </div>
+                    <div class="table-container"><table class="data-table"><thead><tr><th>Rango de Posicion</th><th>Queries</th></tr></thead><tbody><tr><td class="query-text">Top 3</td><td><span class="position-badge excellent">0</span></td></tr><tr><td class="query-text">Top 4-10</td><td><span class="position-badge good">3</span></td></tr><tr><td class="query-text">Top 11-20</td><td><span class="position-badge needs-work">2</span></td></tr><tr><td class="query-text">Top 21-30</td><td><span class="position-badge critical">1</span></td></tr><tr><td class="query-text">Mas alla de 30</td><td><span class="position-badge critical">2</span></td></tr></tbody></table></div>
+                </div>
+            </div>
+            
+            <div class="card-section">
+                <div class="card-section-header">
+                    <span class="icon">[SEARCH]</span>
+                    <h2>Analisis de Palabras Clave</h2>
+                </div>
+                    <div class="table-container"><table class="data-table"><thead><tr><th>Keyword</th><th>Clicks</th><th>Impresiones</th><th>CTR</th><th>Posicion</th></tr></thead><tbody><tr><td class="query-text">computacion lanus</td><td>2</td><td class="impressions">46</td><td>4.35%</td><td><span class="position-badge good">15.3</span></td></tr><tr><td class="query-text">pc lanus</td><td>0</td><td class="impressions">16</td><td>0.00%</td><td><span class="position-badge excellent">6.2</span></td></tr><tr><td class="query-text">casa de computacion lanus</td><td>0</td><td class="impressions">13</td><td>0.00%</td><td><span class="position-badge excellent">8.5</span></td></tr></tbody></table></div>
+                </div>
+            </div>
+            
+            <div class="card-section">
+                <div class="card-section-header">
+                    <span class="icon">[HTML]</span>
+                    <h2>Analisis de Contenido</h2>
+                </div>
+                    <p class="text-muted">No hay datos disponibles para esta seccion.</p>
+                </div>
+            </div>
+            
+            <div class="card-section">
+                <div class="card-section-header">
+                    <span class="icon">[GEAR]</span>
+                    <h2>SEO Tecnico</h2>
+                </div>
+                    <div class="table-container"><table class="data-table"><thead><tr><th>Metrica</th><th>Valor</th></tr></thead><tbody><tr><td class="query-text">Mobile Score</td><td><span class="score-badge critical">48</span></td></tr><tr><td class="query-text">Desktop Score</td><td><span class="score-badge needs-work">68</span></td></tr><tr><td class="query-text">LCP (Largest Contentful Paint)</td><td>4.5s</td></tr><tr><td class="query-text">CLS (Cumulative Layout Shift)</td><td>0.18</td></tr><tr><td class="query-text">FID (First Input Delay)</td><td>200ms</td></tr></tbody></table></div>
+                </div>
+            </div>
+            
+            <div class="card-section">
+                <div class="card-section-header">
+                    <span class="icon">[USERS]</span>
+                    <h2>Experiencia de Usuario</h2>
+                </div>
+                    <div class="table-container"><table class="data-table"><thead><tr><th>Metrica</th><th>Valor</th></tr></thead><tbody><tr><td class="query-text">HTTPS Habilitado</td><td>Si</td></tr><tr><td class="query-text">Mobile Friendly</td><td>Si</td></tr></tbody></table></div>
+                </div>
+            </div>
+            
+            <div class="card-section">
+                <div class="card-section-header">
+                    <span class="icon">[LINK]</span>
+                    <h2>Enlaces y Autoridad</h2>
+                </div>
+                    <div class="table-container"><table class="data-table"><thead><tr><th>Metrica</th><th>Valor</th></tr></thead><tbody><tr><td class="query-text">Enlaces Internos</td><td>0</td></tr><tr><td class="query-text">Enlaces Externos</td><td>0</td></tr><tr><td class="query-text">Backlinks</td><td>0</td></tr><tr><td class="query-text">Dominios Referentes</td><td>0</td></tr></tbody></table></div>
+                </div>
+            </div>
+            
+            <div class="card-section">
+                <div class="card-section-header">
+                    <span class="icon">[SCORE]</span>
+                    <h2>Analisis de Competencia</h2>
+                </div>
+                    <p class="text-muted">No hay datos disponibles para esta seccion.</p>
+                </div>
+            </div>
+            
+            <div class="card-section">
+                <div class="card-section-header">
+                    <span class="icon">[IDEA]</span>
+                    <h2>Oportunidades</h2>
+                </div>
+                    <p class="text-muted">No hay datos disponibles para esta seccion.</p>
+                </div>
+            </div>
+            
+            <div class="card-section">
+                <div class="card-section-header">
+                    <span class="icon">[WARN]</span>
+                    <h2>Hallazgos</h2>
+                </div>
+                    <div class="findings-grid"><div class="finding-card high"><div class="severity"><span class="severity-badge high">HIGH</span></div><h4>Posicion promedio a mejorar</h4><p>La posicion promedio es 14.2.</p></div><div class="finding-card pass"><div class="severity"><span class="severity-badge pass">PASS</span></div><h4>CTR saludable</h4><p>El CTR promedio es 3.20%.</p></div><div class="finding-card pass"><div class="severity"><span class="severity-badge pass">PASS</span></div><h4>Keywords relevantes detectadas</h4><p>3 keywords cumplen los criterios de analisis.</p></div><div class="finding-card critical"><div class="severity"><span class="severity-badge critical">CRITICAL</span></div><h4>Mobile Score critico</h4><p>PageSpeed mobile score: 48/100.</p></div></div>
+                </div>
+            </div>
+            
 
             <!-- ACTION PLAN -->
             <div class="card-section">
@@ -116,31 +2248,145 @@
                     <h2>Plan de Acción 30/60/90</h2>
                 </div>
                 <div class="plan-timeline">
-                    {% for phase in action_plan %}
-                    <div class="timeline-phase {{ phase.class }}">
+                    
+                    <div class="timeline-phase active">
                         <div class="phase-header">
-                            <span class="phase-badge">{{ phase.badge }}</span>
+                            <span class="phase-badge">30 DIAS</span>
                             <div>
-                                <h3 class="phase-title">{{ phase.title }}</h3>
-                                <p class="phase-subtitle">{{ phase.subtitle }}</p>
+                                <h3 class="phase-title">Primeros 30 Dias</h3>
+                                <p class="phase-subtitle">Acciones inmediatas de alto impacto</p>
                             </div>
                         </div>
                         <div class="tasks-list">
-                            {% for task in phase.tasks %}
-                            <div class="task-card {{ task.priority }}">
+                            
+                            <div class="task-card p1">
                                 <div class="task-content">
-                                    <h4>{{ task.title }}</h4>
-                                    <p>{{ task.description }}</p>
+                                    <h4>Optimizar velocidad mobile (urgente)</h4>
+                                    <p>El score movil es 48/100. Comprimir imagenes, minificar CSS/JS, y usar lazy loading.</p>
                                 </div>
                                 <div class="task-meta">
-                                    <span class="priority-badge {{ task.priority }}">{{ task.priority_label }}</span>
-                                    <span class="effort-badge {{ task.effort }}">{{ task.effort_label }}</span>
+                                    <span class="priority-badge p1">P1 - Alto</span>
+                                    <span class="effort-badge medium">Esfuerzo medio</span>
                                 </div>
                             </div>
-                            {% endfor %}
+                            
                         </div>
                     </div>
-                    {% endfor %}
+                    
+                    <div class="timeline-phase ">
+                        <div class="phase-header">
+                            <span class="phase-badge">60 DIAS</span>
+                            <div>
+                                <h3 class="phase-title">Dias 31-60</h3>
+                                <p class="phase-subtitle">Optimizaciones tecnicas y de contenido</p>
+                            </div>
+                        </div>
+                        <div class="tasks-list">
+                            
+                            <div class="task-card p1">
+                                <div class="task-content">
+                                    <h4>Empujar 1 keywords de posicion 16-20 a Top 10</h4>
+                                    <p>Mejorar la profundidad del contenido y anadir enlaces internos para estas keywords cercanas a la primera pagina.</p>
+                                </div>
+                                <div class="task-meta">
+                                    <span class="priority-badge p1">P1 - Alto</span>
+                                    <span class="effort-badge medium">Esfuerzo medio</span>
+                                </div>
+                            </div>
+                            
+                            <div class="task-card p2">
+                                <div class="task-content">
+                                    <h4>Mejorar PageSpeed desktop</h4>
+                                    <p>El score desktop es 68/100. Optimizar render-blocking resources y caching.</p>
+                                </div>
+                                <div class="task-meta">
+                                    <span class="priority-badge p2">P2 - Medio</span>
+                                    <span class="effort-badge medium">Esfuerzo medio</span>
+                                </div>
+                            </div>
+                            
+                            <div class="task-card p2">
+                                <div class="task-content">
+                                    <h4>Optimizar LCP (Largest Contentful Paint)</h4>
+                                    <p>LCP actual: 4.5s (objetivo: &lt;2.5s). Optimizar imagenes hero, preconnect a dominios externos, y mejorar server response time.</p>
+                                </div>
+                                <div class="task-meta">
+                                    <span class="priority-badge p2">P2 - Medio</span>
+                                    <span class="effort-badge medium">Esfuerzo medio</span>
+                                </div>
+                            </div>
+                            
+                            <div class="task-card p2">
+                                <div class="task-content">
+                                    <h4>Reducir CLS (Cumulative Layout Shift)</h4>
+                                    <p>CLS actual: 0.18 (objetivo: &lt;0.1). Asignar dimensiones a imagenes/videos y evitar contenido dinamico above-the-fold.</p>
+                                </div>
+                                <div class="task-meta">
+                                    <span class="priority-badge p2">P2 - Medio</span>
+                                    <span class="effort-badge low">Bajo esfuerzo</span>
+                                </div>
+                            </div>
+                            
+                            <div class="task-card p2">
+                                <div class="task-content">
+                                    <h4>Incrementar presencia en Top 3</h4>
+                                    <p>Solo 0 de 8 keywords estan en Top 3. Crear contenido de mayor calidad y conseguir backlinks para escalar posiciones.</p>
+                                </div>
+                                <div class="task-meta">
+                                    <span class="priority-badge p2">P2 - Medio</span>
+                                    <span class="effort-badge medium">Esfuerzo medio</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-phase ">
+                        <div class="phase-header">
+                            <span class="phase-badge">90 DIAS</span>
+                            <div>
+                                <h3 class="phase-title">Dias 61-90</h3>
+                                <p class="phase-subtitle">Estrategia a largo plazo</p>
+                            </div>
+                        </div>
+                        <div class="tasks-list">
+                            
+                            <div class="task-card p2">
+                                <div class="task-content">
+                                    <h4>Crear contenido para keyword gaps</h4>
+                                    <p>Identificar keywords relevantes sin cobertura y crear articulos/paginas optimizados para capturar trafico nuevo.</p>
+                                </div>
+                                <div class="task-meta">
+                                    <span class="priority-badge p2">P2 - Medio</span>
+                                    <span class="effort-badge medium">Esfuerzo medio</span>
+                                </div>
+                            </div>
+                            
+                            <div class="task-card p3">
+                                <div class="task-content">
+                                    <h4>Implementar estrategia de link building</h4>
+                                    <p>Conseguir backlinks de calidad mediante guest posting, partnerships, y creacion de contenido linkable (guias, infografias, estudios).</p>
+                                </div>
+                                <div class="task-meta">
+                                    <span class="priority-badge p3">P3 - Bajo</span>
+                                    <span class="effort-badge high">Alto esfuerzo</span>
+                                </div>
+                            </div>
+                            
+                            <div class="task-card p3">
+                                <div class="task-content">
+                                    <h4>Implementar Schema.org completo</h4>
+                                    <p>Anadir structured data para Organization, BreadcrumbList, Article/Product, y FAQ segun corresponda al tipo de sitio.</p>
+                                </div>
+                                <div class="task-meta">
+                                    <span class="priority-badge p3">P3 - Bajo</span>
+                                    <span class="effort-badge medium">Esfuerzo medio</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -172,7 +2418,7 @@
             const gaugeFill = document.querySelector('.score-gauge-fill');
             if (gaugeFill) {
                 setTimeout(() => {
-                    gaugeFill.style.strokeDashoffset = '87.72999999999999';
+                    gaugeFill.style.strokeDashoffset = '87';
                 }, 100);
             }
         });

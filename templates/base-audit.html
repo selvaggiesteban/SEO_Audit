@@ -4,16 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - SEO Audit Report</title>
-    <link rel="stylesheet" href="../css/tokens.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/components/card.css">
-    <link rel="stylesheet" href="../css/components/stat-box.css">
-    <link rel="stylesheet" href="../css/components/badges.css">
-    <link rel="stylesheet" href="../css/components/table.css">
-    <link rel="stylesheet" href="../css/components/cta.css">
-    <link rel="stylesheet" href="../css/components/findings.css">
-    <link rel="stylesheet" href="../css/components/score-gauge.css">
-    <link rel="stylesheet" href="../css/components/plan-timeline.css">
+    {{ inlined_css }}
     <style>
         .audit-meta {
             display: flex;
@@ -105,7 +96,8 @@
                     <span class="icon">{{ section.icon }}</span>
                     <h2>{{ section.title }}</h2>
                 </div>
-                {{ section.content }}
+                    {{ section.content|safe }}
+                </div>
             </div>
             {% endfor %}
 
