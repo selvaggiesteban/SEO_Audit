@@ -29,7 +29,7 @@ body {
   color: var(--gray-900);
   background: var(--gradient-body);
   min-height: 100vh;
-  padding: var(--space-10) var(--space-5);
+  padding: var(--space-10) var(--space-6);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -402,8 +402,7 @@ img {
   .table-container {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    margin: 0 calc(var(--space-5) * -1);
-    padding: 0 var(--space-5);
+    padding: 0;
   }
 
   .data-table {
