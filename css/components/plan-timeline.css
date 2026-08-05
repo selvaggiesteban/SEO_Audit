@@ -108,10 +108,10 @@
   align-items: center;
   padding: var(--space-4) var(--space-5);
   background: white;
-  border-radius: 12px;
-  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
   border-left: 4px solid var(--gray-300);
-  transition: all var(--transition-fast);
+  border-radius: 6px;
+  transition: border-color var(--transition-fast);
 }
 
 .task-card:hover {
