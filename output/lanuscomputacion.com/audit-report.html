@@ -259,7 +259,7 @@
   /* ==========================================================
      CONTAINER
      ========================================================== */
-  --container-max-width: 1100px;
+  --container-max-width: 1366px;
   --container-padding: var(--space-5);
 }
 
@@ -562,19 +562,241 @@ img {
    ========================================================== */
 @media (max-width: 768px) {
   body {
-    padding: var(--space-5) var(--space-3);
+    padding: var(--space-4) var(--space-3);
   }
 
   h1 {
     font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-3);
   }
 
   h2 {
     font-size: var(--font-size-xl);
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-3);
   }
 
   h3 {
     font-size: var(--font-size-lg);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+  }
+
+  h4 {
+    font-size: var(--font-size-base);
+  }
+
+  /* Card */
+  .card-header {
+    padding: var(--space-5) var(--space-5);
+  }
+
+  .card-header h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  .card-header .subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .card-section {
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .card-section-header {
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .card-footer {
+    padding: var(--space-5);
+  }
+
+  /* Stats grid */
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    padding: var(--space-5);
+  }
+
+  .stat-box {
+    padding: var(--space-4);
+  }
+
+  .stat-box .number {
+    font-size: var(--font-size-2xl);
+  }
+
+  .stat-box .label {
+    font-size: var(--font-size-xs);
+  }
+
+  /* Score gauge */
+  .score-gauge-container {
+    padding: var(--space-5);
+  }
+
+  .score-gauge {
+    width: 160px;
+    height: 100px;
+  }
+
+  .score-gauge .score-value {
+    font-size: var(--font-size-3xl);
+  }
+
+  .score-breakdown {
+    gap: var(--space-2);
+  }
+
+  .score-breakdown-item {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .score-breakdown-item .weight {
+    font-size: 10px;
+  }
+
+  .score-breakdown-item .dimension {
+    font-size: 9px;
+  }
+
+  .score-breakdown-item .dimension-score {
+    font-size: var(--font-size-sm);
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Audit meta */
+  .audit-meta {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .audit-meta-item {
+    font-size: var(--font-size-xs);
+  }
+
+  /* Data table - horizontal scroll */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 calc(var(--space-5) * -1);
+    padding: 0 var(--space-5);
+  }
+
+  .data-table {
+    min-width: 600px;
+    font-size: var(--font-size-sm);
+  }
+
+  .data-table thead th {
+    padding: var(--space-3) var(--space-4);
+    font-size: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .data-table tbody td {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-size-sm);
+  }
+
+  /* Findings grid */
+  .findings-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .finding-card {
+    padding: var(--space-4);
+  }
+
+  .finding-card h4 {
+    font-size: var(--font-size-sm);
+  }
+
+  .finding-card p {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Task card */
+  .task-card {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    padding: var(--space-4);
+  }
+
+  .task-card .task-meta {
+    justify-content: flex-start;
+    gap: var(--space-2);
+  }
+
+  /* Phase */
+  .phase-header {
+    padding: var(--space-4) var(--space-5);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .phase-badge {
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-3);
+  }
+
+  .phase-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .phase-subtitle {
+    font-size: var(--font-size-xs);
+  }
+
+  /* CTA */
+  .cta-box {
+    padding: var(--space-6) var(--space-5);
+  }
+
+  .cta-box h3 {
+    font-size: var(--font-size-xl);
+  }
+
+  .cta-box p {
+    font-size: var(--font-size-base);
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--font-size-sm);
+  }
+
+  /* Section divider */
+  .section-divider {
+    height: 3px;
+  }
+
+  /* Lists in findings */
+  .finding-card ul {
+    padding-left: var(--space-4);
+  }
+
+  .finding-card li {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-1);
+  }
+
+  /* Badge sizes */
+  .badge {
+    font-size: 10px;
+    padding: 2px 6px;
   }
 }
 
