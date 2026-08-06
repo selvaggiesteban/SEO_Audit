@@ -1960,33 +1960,64 @@ img {
    ========================================================== */
 .score-breakdown {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: var(--space-4);
   margin-top: var(--space-6);
 }
 
 .score-breakdown-item {
   text-align: center;
-}
-
-.score-breakdown-item .weight {
-  font-size: var(--font-size-xs);
-  color: var(--gray-500);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wide);
-  margin-bottom: var(--space-1);
+  padding: var(--space-4);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
 }
 
 .score-breakdown-item .dimension {
   font-size: var(--font-size-sm);
   color: var(--gray-700);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-2);
 }
 
 .score-breakdown-item .dimension-score {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-2);
 }
+
+.score-breakdown-item .weight {
+  font-size: 11px;
+  color: var(--gray-500);
+  background: var(--gray-100);
+  padding: 2px 8px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.score-breakdown-item .progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--gray-200);
+  border-radius: 2px;
+  margin-bottom: var(--space-2);
+  overflow: hidden;
+}
+
+.score-breakdown-item .progress-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+.score-breakdown-item.excellent .progress-bar-fill { background: var(--success); }
+.score-breakdown-item.good .progress-bar-fill { background: var(--primary); }
+.score-breakdown-item.needs-work .progress-bar-fill { background: var(--warning); }
+.score-breakdown-item.critical .progress-bar-fill { background: var(--danger); }
+
+.score-breakdown-item.excellent .dimension-score { color: var(--success); }
+.score-breakdown-item.good .dimension-score { color: var(--primary); }
+.score-breakdown-item.needs-work .dimension-score { color: var(--warning); }
+.score-breakdown-item.critical .dimension-score { color: var(--danger); }
 
 /* ==========================================================
    RESPONSIVE
@@ -2295,46 +2326,67 @@ img {
                 <!-- Score Breakdown -->
                 <div class="score-breakdown" role="list">
                     
-                    <div class="score-breakdown-item" role="listitem">
-                        <div class="weight">25%</div>
+                    <div class="score-breakdown-item excellent" role="listitem">
                         <div class="dimension">Posicionamiento</div>
-                        <div class="dimension-score excellent">90</div>
+                        <div class="dimension-score">90</div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 90%"></div>
+                        </div>
+                        <div class="weight">Peso: 25%</div>
                     </div>
                     
-                    <div class="score-breakdown-item" role="listitem">
-                        <div class="weight">20%</div>
+                    <div class="score-breakdown-item critical" role="listitem">
                         <div class="dimension">Palabras Clave</div>
-                        <div class="dimension-score critical">0</div>
+                        <div class="dimension-score">0</div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="weight">Peso: 20%</div>
                     </div>
                     
-                    <div class="score-breakdown-item" role="listitem">
-                        <div class="weight">15%</div>
+                    <div class="score-breakdown-item needs-work" role="listitem">
                         <div class="dimension">Contenido</div>
-                        <div class="dimension-score needs-work">60</div>
+                        <div class="dimension-score">60</div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 60%"></div>
+                        </div>
+                        <div class="weight">Peso: 15%</div>
                     </div>
                     
-                    <div class="score-breakdown-item" role="listitem">
-                        <div class="weight">15%</div>
+                    <div class="score-breakdown-item needs-work" role="listitem">
                         <div class="dimension">SEO Tecnico</div>
-                        <div class="dimension-score needs-work">60</div>
+                        <div class="dimension-score">60</div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 60%"></div>
+                        </div>
+                        <div class="weight">Peso: 15%</div>
                     </div>
                     
-                    <div class="score-breakdown-item" role="listitem">
-                        <div class="weight">10%</div>
+                    <div class="score-breakdown-item good" role="listitem">
                         <div class="dimension">Experiencia Usuario</div>
-                        <div class="dimension-score good">70</div>
+                        <div class="dimension-score">70</div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 70%"></div>
+                        </div>
+                        <div class="weight">Peso: 10%</div>
                     </div>
                     
-                    <div class="score-breakdown-item" role="listitem">
-                        <div class="weight">10%</div>
+                    <div class="score-breakdown-item needs-work" role="listitem">
                         <div class="dimension">Enlaces</div>
-                        <div class="dimension-score needs-work">50</div>
+                        <div class="dimension-score">50</div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 50%"></div>
+                        </div>
+                        <div class="weight">Peso: 10%</div>
                     </div>
                     
-                    <div class="score-breakdown-item" role="listitem">
-                        <div class="weight">5%</div>
+                    <div class="score-breakdown-item needs-work" role="listitem">
                         <div class="dimension">Competencia</div>
-                        <div class="dimension-score needs-work">50</div>
+                        <div class="dimension-score">50</div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 50%"></div>
+                        </div>
+                        <div class="weight">Peso: 5%</div>
                     </div>
                     
                 </div>

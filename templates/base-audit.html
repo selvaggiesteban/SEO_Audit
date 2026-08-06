@@ -67,10 +67,13 @@
                 <!-- Score Breakdown -->
                 <div class="score-breakdown" role="list">
                     {% for dimension in dimensions %}
-                    <div class="score-breakdown-item" role="listitem">
-                        <div class="weight">{{ dimension.weight }}%</div>
+                    <div class="score-breakdown-item {{ dimension.score_class }}" role="listitem">
                         <div class="dimension">{{ dimension.name }}</div>
-                        <div class="dimension-score {{ dimension.score_class }}">{{ dimension.score }}</div>
+                        <div class="dimension-score">{{ dimension.score }}</div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: {{ dimension.score }}%"></div>
+                        </div>
+                        <div class="weight">Peso: {{ dimension.weight }}%</div>
                     </div>
                     {% endfor %}
                 </div>
