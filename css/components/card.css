@@ -68,6 +68,11 @@
   padding: var(--space-8) var(--space-10);
   border-bottom: 1px solid var(--gray-200);
   overflow: hidden;
+  max-width: 100%;
+}
+
+.card-section > * {
+  max-width: 100%;
 }
 
 .card-section:last-child {

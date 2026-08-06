@@ -9,8 +9,9 @@
    TABLE CONTAINER
    ========================================================== */
 .table-container {
-  padding: var(--space-8) var(--space-10);
+  padding: 0;
   overflow-x: auto;
+  max-width: 100%;
 }
 
 /* ==========================================================
