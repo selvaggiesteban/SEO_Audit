@@ -12,7 +12,7 @@
 <h4>Core Web Vitals</h4>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-6);">
     {% for cwv in core_web_vitals %}
-    <div style="background: white; border-radius: 12px; padding: var(--space-5); text-align: center; box-shadow: var(--shadow-sm); border-left: 4px solid var(--cwv.color);">
+    <div style="background: white; border-radius: 12px; padding: var(--space-5); text-align: center; box-shadow: none; border-left: 4px solid var(--cwv.color);">
         <div class="text-sm text-muted text-uppercase" style="letter-spacing: 0.05em;">{{ cwv.name }}</div>
         <div style="font-size: var(--font-size-3xl); font-weight: bold; color: {{ cwv.color }}; margin: var(--space-2) 0;">{{ cwv.value }}</div>
         <span class="severity-badge {{ cwv.status_class }}">{{ cwv.status_label }}</span>

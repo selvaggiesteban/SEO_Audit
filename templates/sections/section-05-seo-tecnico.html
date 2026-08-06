@@ -12,7 +12,7 @@
 <h4>PageSpeed Insights</h4>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-5); margin-bottom: var(--space-6);">
     {% for device in pagespeed_devices %}
-    <div style="background: white; border-radius: 12px; padding: var(--space-5); box-shadow: var(--shadow-sm); border: 1px solid var(--gray-200);">
+    <div style="background: white; border-radius: 12px; padding: var(--space-5); box-shadow: none; border: 1px solid var(--gray-200);">
         <h4 style="margin-bottom: var(--space-4);">{{ device.icon }} {{ device.label }}</h4>
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4);">
             {% for metric in device.metrics %}

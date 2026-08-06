@@ -202,14 +202,14 @@
   /* ==========================================================
      SOMBRAS
      ========================================================== */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.04);
-  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.04);
-  --shadow-2xl: 0 16px 32px rgba(0, 0, 0, 0.06);
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.06);
-  --shadow-stat: 0 1px 3px rgba(0, 0, 0, 0.04);
-  --shadow-button-hover: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-2xl: none;
+  --shadow-card: none;
+  --shadow-stat: none;
+  --shadow-button-hover: none;
 
   /* ==========================================================
      GRADIENTES
